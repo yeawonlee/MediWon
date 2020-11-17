@@ -9,6 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ManageMyReviewActivity"></activity>
+        <activity android:name=".SavingCustomDataActivity" />
+        <activity android:name=".BookmarkActivity" />
+        <activity android:name=".EditPersonalDataActivity" />
+        <activity android:name=".MyPageActivity" />
+        <activity android:name=".RankingActivity" />
+        <activity android:name=".ReviewActivity" />
+        <activity android:name=".SearchIngredientsActivity" />
+        <activity android:name=".SearchMedicineActivity" />
+        <activity android:name=".JoinActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
