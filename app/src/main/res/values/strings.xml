@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MediWon</string>
+
+    <string name="search">Search</string>
+
+    <string name="edit">개인 정보 수정</string>
+    <string name="bookmark">즐겨찾기</string>
+    <string name="my_setting">My 설정</string>
+    <string name="my_review">내가 작성한 후기</string>
+    <string name="logout">로그아웃</string>
+    <string name="withdrawal">회원탈퇴</string>
 </resources>
