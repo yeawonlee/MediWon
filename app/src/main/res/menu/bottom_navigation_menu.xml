@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/go_to_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/bottom_nav_1"/>
+    <item
+        android:id="@+id/go_to_searchMedicinePage"
+        android:enabled="true"
+        android:icon="@drawable/ic_pills"
+        android:title="@string/bottom_nav_2"/>
+    <item
+        android:id="@+id/go_to_searchIngredientsPage"
+        android:enabled="true"
+        android:icon="@drawable/ic_open_pill"
+        android:title="@string/bottom_nav_3"/>
+    <item
+        android:id="@+id/go_to_reviewPage"
+        android:enabled="true"
+        android:icon="@drawable/ic_forum_black_24dp"
+        android:title="@string/bottom_nav_4"/>
+</menu>

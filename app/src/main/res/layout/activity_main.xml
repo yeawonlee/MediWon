@@ -13,12 +13,14 @@
         android:layout_height="match_parent">
 
         <!-- contents 여기에 -->
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
@@ -27,7 +29,8 @@
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/top_app_bar"
             app:navigationIcon="@drawable/ic_menu_black_24dp"
-            app:title="@string/app_name">
+            app:title="@string/app_name"
+            android:background="@android:color/white">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -57,5 +60,23 @@
         android:layout_gravity="start|left"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/navigation_items_login" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/bottom_navigation_menu"
+            android:background="@android:color/white"
+            app:itemBackground="@android:color/white"
+            app:itemTextColor="@drawable/selector"
+            app:itemIconTint="@drawable/selector"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

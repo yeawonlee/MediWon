@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.mediwon"
-        minSdkVersion 24
+        minSdkVersion 24    // minSdkVersion 25     Bottom Navigation 25이상부터 지원
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -36,4 +36,7 @@ dependencies {
 
     // CircleImageView - 프로필 이미지 동그랗게
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Bottom Navigation
+    implementation 'com.google.android.material:material:1.0.0'
 }

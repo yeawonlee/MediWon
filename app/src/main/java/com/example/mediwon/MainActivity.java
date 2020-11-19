@@ -11,9 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-
-import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,8 +21,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-
-    //private ImageView profileImage;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +37,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.go_to_home);
 
-        //profileImage = findViewById(R.id.profile_image);
-        //Glide.with(this).load(R.drawable.ic_pill_medicine_medicines_medical_icon_131306).into(profileImage);
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setSelectedItemId(R.id.go_to_home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.go_to_home:
+                        return true;
+                    case R.id.go_to_searchMedicinePage:
+                        startActivity(new Intent(context, SearchMedicineActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.go_to_searchIngredientsPage:
+                        startActivity(new Intent(context, SearchIngredientsActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.go_to_reviewPage:
+                        startActivity(new Intent(context, ReviewActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    /*
+                    case R.id.go_to_rankingPage:
+                        intent =  new Intent(context, RankingActivity.class);
+                        startActivity(intent);
+                        break;*/
+                }
+
+                return true;
+            }
+        });
+
     }
 
 
