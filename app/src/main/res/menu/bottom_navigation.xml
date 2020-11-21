@@ -2,23 +2,33 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/go_to_home"
+        android:id="@+id/navigationHome"
         android:enabled="true"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/bottom_nav_1"/>
+
     <item
-        android:id="@+id/go_to_searchMedicinePage"
+        android:id="@+id/navigationSearchMedicine"
         android:enabled="true"
-        android:icon="@drawable/ic_pills"
+        android:icon="@drawable/ic_pill_capsule"
         android:title="@string/bottom_nav_2"/>
+
     <item
-        android:id="@+id/go_to_searchIngredientsPage"
+        android:id="@+id/navigationSearchMedicineByIngredients"
         android:enabled="true"
         android:icon="@drawable/ic_open_pill"
         android:title="@string/bottom_nav_3"/>
+
     <item
-        android:id="@+id/go_to_reviewPage"
+        android:id="@+id/navigationReview"
         android:enabled="true"
         android:icon="@drawable/ic_forum_black_24dp"
         android:title="@string/bottom_nav_4"/>
+
+    <item
+        android:id="@+id/navigationRanking"
+        android:enabled="true"
+        android:icon="@drawable/ic_show_chart_black_24dp"
+        android:title="@string/bottom_nav_5"/>
+
 </menu>

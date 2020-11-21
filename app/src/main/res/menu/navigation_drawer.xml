@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/my_page">
+        <menu>
+            <item
+                android:id="@+id/edit"
+                android:icon="@drawable/ic_edit_black_24dp"
+                android:title="@string/edit" />
+            <item
+                android:id="@+id/bookmark"
+                android:icon="@drawable/ic_star_black_24dp"
+                android:title="@string/bookmark" />
+            <item
+                android:id="@+id/my_setting"
+                android:icon="@drawable/ic_check_box_black_24dp"
+                android:title="@string/my_setting" />
+            <item
+                android:id="@+id/my_review"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="@string/my_review" />
+        </menu>
+    </item>
+
+    <item android:title="APP">
+        <menu>
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_power_settings_new_black_24dp"
+                android:title="@string/logout"/>
+            <item
+                android:id="@+id/withdrawal"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/withdrawal"/>
+        </menu>
+    </item>
+
+</menu>
