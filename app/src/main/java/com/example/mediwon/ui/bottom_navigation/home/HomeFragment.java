@@ -3,7 +3,7 @@ package com.example.mediwon.ui.bottom_navigation.home;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         // LinearLayoutManager 사용
-        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(layoutManager);
 
         // Adapter를 통해 데이터 연결
@@ -43,6 +43,9 @@ public class HomeFragment extends Fragment {
         adapter = new MyAdapter(dataSet);
         recyclerView.setAdapter(adapter);
 
+        dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "대웅라베프라졸정20밀리그램", "대웅바이오(주)"));
+        dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "에스린정", "(주)휴비스트제약"));
+        dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "게보린정", "삼진제약(주)"));
         dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "대웅라베프라졸정20밀리그램", "대웅바이오(주)"));
         dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "에스린정", "(주)휴비스트제약"));
         dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "게보린정", "삼진제약(주)"));

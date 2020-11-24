@@ -4,24 +4,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="4dp"
         android:layout_gravity="center"
         app:cardCornerRadius="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="240dp"
             android:orientation="vertical" >
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="174dp"
+                android:layout_height="156dp"
                 android:id="@+id/medicineImage"
                 android:scaleType="fitCenter" />
 
@@ -31,14 +31,15 @@
                 android:id="@+id/medicineName"
                 android:text="제품명"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/pharmaceuticalCompany"
-                android:layout_margin="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
                 android:text="제약회사"
                 android:textAppearance="?attr/textAppearanceBody1"
                 android:textColor="?android:attr/textColorSecondary" />
