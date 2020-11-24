@@ -1,7 +1,5 @@
-package com.example.mediwon.ui.review;
+package com.example.mediwon.ui.bottom_navigation.review;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;

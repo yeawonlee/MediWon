@@ -8,15 +8,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.mediwon.ui.adapter.MyAdapter;
+import com.example.mediwon.view_model.Medicine;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,13 +45,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         context = getApplicationContext();
 
+        /*  App Bar */
         toolbar = findViewById(R.id.topAppBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        /*  Bottom Navigation   */
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         navController = Navigation.findNavController(this, R.id.fragment_layout);
 
+        /*  Navigation Drawer   */
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
 
@@ -58,15 +67,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
     }
+
+    /*  Navigation Drawer   */
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         actionBarDrawerToggle.onOptionsItemSelected(item);
         return super.onOptionsItemSelected(item);
     }
-
-    ///// Navigation Drawer
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -108,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    ///// 옵션 메뉴
+    /*  옵션 메뉴   */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
