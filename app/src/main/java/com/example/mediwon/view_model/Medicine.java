@@ -2,26 +2,39 @@ package com.example.mediwon.view_model;
 
 public class Medicine {
 
-    int image;
+    String imageUrl;
     String name;
-    String pharmaceuticalCompany;
+    String enterprise;
 
-    public Medicine(int image, String name, String pharmaceuticalCompany) {
+    /*
+    public Medicine(int image, String name, String enterprise) {
         this.image = image;
         this.name = name;
-        this.pharmaceuticalCompany = pharmaceuticalCompany;
+        this.enterprise = enterprise;
+    }
+    */
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public int getImage() {
-        return image;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPharmaceuticalCompany() {
-        return pharmaceuticalCompany;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public String getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(String enterprise) {
+        this.enterprise = enterprise;
+    }
 }

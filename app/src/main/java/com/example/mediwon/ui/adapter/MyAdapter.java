@@ -1,5 +1,6 @@
 package com.example.mediwon.ui.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.mediwon.R;
 import com.example.mediwon.view_model.Medicine;
 
@@ -15,29 +17,30 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
+    private Context context;
     private ArrayList<Medicine> dataSet;
 
     // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+    // Provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         // each data item is just a string in this case
         public ImageView imageView;
         public TextView nameTextView;
-        public TextView pharmaceuticalCompanyTextView;
+        public TextView enterpriseTextView;
 
         public ViewHolder(View view) {
 
             super(view);
             imageView = view.findViewById(R.id.medicineImage);
             nameTextView = view.findViewById(R.id.medicineName);
-            pharmaceuticalCompanyTextView = view.findViewById(R.id.pharmaceuticalCompany);
+            enterpriseTextView = view.findViewById(R.id.enterprise);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(ArrayList<Medicine> dataSet) {
+    public MyAdapter(Context context, ArrayList<Medicine> dataSet) {
+        this.context = context;
         this.dataSet = dataSet;
     }
 
@@ -57,14 +60,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        holder.imageView.setImageResource(dataSet.get(position).getImage());
+        //Glide.with(context)  // Activity 자리. 안 되면 context 넣어보기
+        Glide.with(holder.imageView)
+                .load(dataSet.get(position).getImageUrl())
+                .into(holder.imageView);
         holder.nameTextView.setText(dataSet.get(position).getName());
-        holder.pharmaceuticalCompanyTextView.setText(dataSet.get(position).getPharmaceuticalCompany());
+        holder.enterpriseTextView.setText(dataSet.get(position).getEnterprise());
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+    // Return the size of dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return dataSet.size();

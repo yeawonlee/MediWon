@@ -1,19 +1,25 @@
 package com.example.mediwon.ui.bottom_navigation.home;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.mediwon.R;
 import com.example.mediwon.ui.adapter.MyAdapter;
 import com.example.mediwon.view_model.Medicine;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
@@ -23,6 +29,10 @@ public class HomeFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
 
     private ArrayList<Medicine> dataSet;
+    private Medicine medicine;
+
+    private String key = "lZqRHe1K6Pa5E1JupiOr%2BKKr8Kg6IF0jJjCCrzr9C3oyTdfjAs92SewVuwo0em58nVWDhZNMDlKAaohxk0Khtw%3D%3D";
+    private String requestUrl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,19 +48,83 @@ public class HomeFragment extends Fragment {
         layoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(layoutManager);
 
-        // Adapter를 통해 데이터 연결
-        dataSet = new ArrayList<>();
-        adapter = new MyAdapter(dataSet);
-        recyclerView.setAdapter(adapter);
-
-        dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "대웅라베프라졸정20밀리그램", "대웅바이오(주)"));
-        dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "에스린정", "(주)휴비스트제약"));
-        dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "게보린정", "삼진제약(주)"));
-        dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "대웅라베프라졸정20밀리그램", "대웅바이오(주)"));
-        dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "에스린정", "(주)휴비스트제약"));
-        dataSet.add(new Medicine(R.drawable.ic_contraceptive_pills, "게보린정", "삼진제약(주)"));
+        /*  AsyncTask    */
+        MedicineGrainIdentificationInfoService asyncTask = new MedicineGrainIdentificationInfoService();
+        asyncTask.execute();
 
         return rootView;
+    }
+
+    public class MedicineGrainIdentificationInfoService extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            requestUrl = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList?ServiceKey=" + key;
+
+            try {
+                boolean isImage = false;
+                boolean isName = false;
+                boolean isEnterprise = false;
+
+                URL url = new URL(requestUrl);
+                InputStream inputStream = url.openStream();
+                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+                XmlPullParser parser = factory.newPullParser();
+                parser.setInput(new InputStreamReader(inputStream, "UTF-8"));
+
+                String tag;
+                int eventType = parser.getEventType();
+
+                while(eventType != XmlPullParser.END_DOCUMENT){
+                    switch (eventType){
+                        case XmlPullParser.START_DOCUMENT:
+                            dataSet = new ArrayList<>();
+                            break;
+                        case XmlPullParser.END_DOCUMENT:
+                            break;
+                        case XmlPullParser.END_TAG:
+                            if(parser.getName().equals("item") && medicine != null) {
+                                dataSet.add(medicine);
+                            }
+                            break;
+                        case XmlPullParser.START_TAG:
+                            if(parser.getName().equals("item")){
+                                medicine = new Medicine();
+                            }
+                            if (parser.getName().equals("ITEM_IMAGE")) isImage = true;
+                            if (parser.getName().equals("ITEM_NAME")) isName = true;
+                            if (parser.getName().equals("ENTP_NAME")) isEnterprise = true;
+                            break;
+                        case XmlPullParser.TEXT:
+                            if(isImage){
+                                medicine.setImageUrl(parser.getText());
+                                isImage = false;
+                            } else if(isName) {
+                                medicine.setName(parser.getText());
+                                isName = false;
+                            } else if (isEnterprise) {
+                                medicine.setEnterprise(parser.getText());
+                                isEnterprise = false;
+                            }
+                            break;
+                    }
+                    eventType = parser.next();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            // Adapter를 통해 데이터 연결
+            adapter = new MyAdapter(getActivity().getApplicationContext(), dataSet);
+            recyclerView.setAdapter(adapter);
+        }
     }
 
 }
