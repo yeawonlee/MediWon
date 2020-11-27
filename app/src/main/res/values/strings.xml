@@ -27,6 +27,14 @@
     <string name="tab1">제품명</string>
     <string name="tab2">효능</string>
 
+    <!-- 상세 페이지 -->
+    <string name="detail_page">상세 정보 페이지</string>
+    <string name="detail_page_tab1">약품 정보</string>
+    <string name="detail_page_tab2">식별 정보</string>
+    <string name="detail_page_tab3">성분 정보</string>
+    <string name="detail_page_tab4">효능 정보</string>
+    <string name="detail_page_tab5">부작용 정보</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

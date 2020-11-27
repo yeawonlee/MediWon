@@ -61,9 +61,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
             Context context = v.getContext();
             int position = getAdapterPosition();
             Intent intent = new Intent(context, MedicineDetailPageActivity.class);
-            intent.putExtra("image", dataSetAll.get(position).getImageUrl());
             intent.putExtra("name", dataSetAll.get(position).getName());
+            intent.putExtra("engName", dataSetAll.get(position).getEngName());
+            intent.putExtra("image", dataSetAll.get(position).getImageUrl());
+            intent.putExtra("itemSeq", dataSetAll.get(position).getItemSeq());
             intent.putExtra("enterprise", dataSetAll.get(position).getEnterprise());
+            intent.putExtra("classNo", dataSetAll.get(position).getClassNo());
+            intent.putExtra("className", dataSetAll.get(position).getClassName());
+            intent.putExtra("etcOtcName", dataSetAll.get(position).getEtcOtcName());
+            intent.putExtra("ediCode", dataSetAll.get(position).getEdiCode());
             context.startActivity(intent);
         }
     }
