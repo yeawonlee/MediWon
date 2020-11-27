@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mediwon">
-
     <!-- 인터넷 사용 권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,9 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ManageMyReviewActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".MedicineDetailPageActivity"></activity>
+        <activity android:name=".ManageMyReviewActivity" />
         <activity android:name=".SavingCustomDataActivity" />
         <activity android:name=".BookmarkActivity" />
         <activity android:name=".EditPersonalDataActivity" />
@@ -24,7 +24,9 @@
         <activity android:name=".SearchMedicineActivity" />
         <activity android:name=".JoinActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan"> <!-- 키보드 입력 시 Bottom Navigation이 따라 올라오는 것 방지 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

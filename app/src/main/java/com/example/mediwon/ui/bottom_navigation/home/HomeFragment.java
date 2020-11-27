@@ -55,12 +55,15 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
+    /*  AsyncTask    */
+    // AsyncTask<doInBackground, onProgressUpdate, onPostExecute의 매개변수 자료형>
     public class MedicineGrainIdentificationInfoService extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... strings) {
 
-            requestUrl = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList?ServiceKey=" + key;
+            requestUrl = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList?ServiceKey="
+                    + key;
 
             try {
                 boolean isImage = false;
@@ -122,7 +125,8 @@ public class HomeFragment extends Fragment {
             super.onPostExecute(s);
 
             // Adapter를 통해 데이터 연결
-            adapter = new MyAdapter(getActivity().getApplicationContext(), dataSet);
+            //adapter = new MyAdapter(getActivity().getApplicationContext(), dataSet);
+            adapter = new MyAdapter(dataSet);
             recyclerView.setAdapter(adapter);
         }
     }

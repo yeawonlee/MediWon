@@ -6,14 +6,6 @@ public class Medicine {
     String name;
     String enterprise;
 
-    /*
-    public Medicine(int image, String name, String enterprise) {
-        this.image = image;
-        this.name = name;
-        this.enterprise = enterprise;
-    }
-    */
-
     public String getImageUrl() {
         return imageUrl;
     }

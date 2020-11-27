@@ -3,18 +3,24 @@ package com.example.mediwon;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mediwon.ui.adapter.MyAdapter;
+import com.example.mediwon.ui.bottom_navigation.search_medicine.SearchMedicineFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -41,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         /*  App Bar */
         toolbar = findViewById(R.id.topAppBar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         /*  Bottom Navigation   */
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -55,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        //Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -111,12 +117,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    /*  옵션 메뉴   */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.top_app_bar, menu);
-        return true;
-    }
+
 
 }
