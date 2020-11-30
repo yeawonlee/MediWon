@@ -5,24 +5,24 @@
         android:id="@+id/navigationSearchMedicine"
         android:enabled="true"
         android:icon="@drawable/ic_pill_capsule"
-        android:title="@string/bottom_nav_2"/>
+        android:title="@string/bottom_nav_1"/>
 
     <item
         android:id="@+id/navigationSearchMedicineByIngredients"
         android:enabled="true"
         android:icon="@drawable/ic_open_pill"
+        android:title="@string/bottom_nav_2"/>
+
+    <item
+        android:id="@+id/navigationBookmark"
+        android:enabled="true"
+        android:icon="@drawable/ic_star_black_24dp"
         android:title="@string/bottom_nav_3"/>
 
     <item
-        android:id="@+id/navigationReview"
+        android:id="@+id/navigationSetting"
         android:enabled="true"
-        android:icon="@drawable/ic_forum_black_24dp"
+        android:icon="@drawable/ic_settings_black_24dp"
         android:title="@string/bottom_nav_4"/>
-
-    <item
-        android:id="@+id/navigationRanking"
-        android:enabled="true"
-        android:icon="@drawable/ic_show_chart_black_24dp"
-        android:title="@string/bottom_nav_5"/>
 
 </menu>

@@ -8,25 +8,25 @@
     <fragment
         android:id="@+id/navigationSearchMedicine"
         android:name="com.example.mediwon.ui.bottom_navigation.search_medicine.SearchMedicineFragment"
-        android:label="@string/bottom_nav_2"
+        android:label="@string/bottom_nav_1"
         tools:layout="@layout/fragment_search_medicine" />
 
     <fragment
         android:id="@+id/navigationSearchMedicineByIngredients"
         android:name="com.example.mediwon.ui.bottom_navigation.search_medicine_by_ingredients.SearchMedicineByIngredientsFragment"
-        android:label="@string/bottom_nav_3"
+        android:label="@string/bottom_nav_2"
         tools:layout="@layout/fragment_search_medicine_by_ingredients" />
 
     <fragment
-        android:id="@+id/navigationReview"
-        android:name="com.example.mediwon.ui.bottom_navigation.review.ReviewFragment"
-        android:label="@string/bottom_nav_4"
-        tools:layout="@layout/fragment_review" />
+        android:id="@+id/navigationBookmark"
+        android:name="com.example.mediwon.ui.bottom_navigation.bookmark.BookmarkFragment"
+        android:label="@string/bottom_nav_3"
+        tools:layout="@layout/fragment_bookmark" />
 
     <fragment
-        android:id="@+id/navigationRanking"
-        android:name="com.example.mediwon.ui.bottom_navigation.ranking.RankingFragment"
-        android:label="@string/bottom_nav_5"
-        tools:layout="@layout/fragment_ranking" />
+        android:id="@+id/navigationSetting"
+        android:name="com.example.mediwon.ui.bottom_navigation.setting.SettingFragment"
+        android:label="@string/bottom_nav_4"
+        tools:layout="@layout/fragment_setting" />
 
 </navigation>

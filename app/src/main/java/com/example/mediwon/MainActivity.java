@@ -24,7 +24,7 @@ import com.example.mediwon.ui.bottom_navigation.search_medicine.SearchMedicineFr
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {   //implements NavigationView.OnNavigationItemSelectedListener {
 
     private Context context;
 
@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavController navController;
 
     private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
-    private NavigationView navigationView;
+//    private ActionBarDrawerToggle actionBarDrawerToggle;
+//    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +47,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         /*  App Bar */
         toolbar = findViewById(R.id.topAppBar);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         /*  Bottom Navigation   */
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         navController = Navigation.findNavController(this, R.id.fragment_layout);
-
-        /*  Navigation Drawer   */
+/*
+        /*  Navigation Drawer   * /
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
 
@@ -64,12 +64,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         navigationView.setNavigationItemSelectedListener(this);
-
+*/
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
     }
 
-    /*  Navigation Drawer   */
+
+/*  Navigation Drawer
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -116,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void withdraw() {
 
     }
-
-
+*/
 
 }
