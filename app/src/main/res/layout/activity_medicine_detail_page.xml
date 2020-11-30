@@ -99,13 +99,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="품목일련번호"
-                android:textSize="20dp"/>
+                android:textSize="18dp"/>
 
             <TextView
                 android:id="@+id/itemSeq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_span="9"
+                android:layout_span="8"
                 android:text="품목일련번호"
                 android:textSize="20dp"/>
         </TableRow>
@@ -119,13 +119,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="업체명"
-                android:textSize="20dp"/>
+                android:textSize="18dp"/>
 
             <TextView
                 android:id="@+id/enterprise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_span="9"
+                android:layout_span="8"
                 android:text="업체명"
                 android:textSize="20dp"/>
         </TableRow>
@@ -138,15 +138,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="분류번호 (분류명)"
-                android:textSize="20dp"/>
+                android:text="분류"
+                android:textSize="18dp"/>
 
             <TextView
                 android:id="@+id/classNoName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_span="9"
-                android:text="분류번호 (분류명)"
+                android:layout_span="8"
+                android:text="분류번호 / 분류명"
                 android:textSize="20dp"/>
         </TableRow>
 
@@ -159,13 +159,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="구분"
-                android:textSize="20dp"/>
+                android:textSize="18dp"/>
 
             <TextView
                 android:id="@+id/itemEtcOtcName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_span="9"
+                android:layout_span="8"
                 android:text="전문/일반"
                 android:textSize="20dp"/>
         </TableRow>
@@ -179,13 +179,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="보험코드"
-                android:textSize="20dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/ediCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_span="9"
+                android:layout_span="8"
                 android:text="보험코드"
                 android:textSize="20dp"/>
         </TableRow>

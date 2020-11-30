@@ -2,6 +2,7 @@ package com.example.mediwon.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
         //this.context = context;
         this.dataSet = dataSet;
         this.dataSetAll = dataSet;
+        Log.v("adapter", "name : " + dataSetAll.get(0).getName());
     }
 
     // Provide a reference to the views for each data item
@@ -63,6 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
             Intent intent = new Intent(context, MedicineDetailPageActivity.class);
             intent.putExtra("name", dataSetAll.get(position).getName());
             intent.putExtra("engName", dataSetAll.get(position).getEngName());
+            //Log.v("adapter", "engName : " + dataSetAll.get(position).getEngName());
             intent.putExtra("image", dataSetAll.get(position).getImageUrl());
             intent.putExtra("itemSeq", dataSetAll.get(position).getItemSeq());
             intent.putExtra("enterprise", dataSetAll.get(position).getEnterprise());

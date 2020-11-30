@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {   //implements NavigationV
     private BottomNavigationView bottomNavigationView;
     private NavController navController;
 
-    private DrawerLayout drawerLayout;
+//    private DrawerLayout drawerLayout;
 //    private ActionBarDrawerToggle actionBarDrawerToggle;
 //    private NavigationView navigationView;
 

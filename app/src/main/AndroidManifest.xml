@@ -13,17 +13,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".MedicineDetailPageActivity"></activity>
-        <activity android:name=".ManageMyReviewActivity" />
-        <activity android:name=".SavingCustomDataActivity" />
-        <activity android:name=".BookmarkActivity" />
-        <activity android:name=".EditPersonalDataActivity" />
-        <activity android:name=".MyPageActivity" />
-        <activity android:name=".RankingActivity" />
-        <activity android:name=".ReviewActivity" />
-        <activity android:name=".SearchIngredientsActivity" />
-        <activity android:name=".SearchMedicineActivity" />
-        <activity android:name=".JoinActivity" />
-        <activity android:name=".LoginActivity" />
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan"> <!-- 키보드 입력 시 Bottom Navigation이 따라 올라오는 것 방지 -->

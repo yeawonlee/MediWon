@@ -6,13 +6,13 @@ public class Medicine {
     String name;    // 품목명
     String enterprise;  // 업체명
 
-    int itemSeq;    // 품목 일련번호
+    String itemSeq;    // 품목 일련번호
     String chart;   // 성상
     String drug_shape;  // 의약품 모양
     String color_class1;    // 색깔(앞)
-    int classNo;    // 분류번호
+    String classNo;    // 분류번호
     String className;   // 분류명
-    String etcOtcName;  // 전문/일반
+    String etcOtcName;  // 구분 (전문/일반)
     String fromCodeName;    // 제형코드이름
     String markCodeFrontImg;    // 마크 이미지(앞)
     String engName; // 제품영문명
@@ -42,11 +42,11 @@ public class Medicine {
         this.enterprise = enterprise;
     }
 
-    public int getItemSeq() {
+    public String getItemSeq() {
         return itemSeq;
     }
 
-    public void setItemSeq(int itemSeq) {
+    public void setItemSeq(String itemSeq) {
         this.itemSeq = itemSeq;
     }
 
@@ -74,11 +74,11 @@ public class Medicine {
         this.color_class1 = color_class1;
     }
 
-    public int getClassNo() {
+    public String getClassNo() {
         return classNo;
     }
 
-    public void setClassNo(int classNo) {
+    public void setClassNo(String classNo) {
         this.classNo = classNo;
     }
 

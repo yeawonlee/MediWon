@@ -149,9 +149,16 @@ public class SearchMedicineFragment extends Fragment implements TabLayout.OnTabS
                     + key + "&numOfRows=10";
 
             try {
-                boolean isImage = false;
-                boolean isName = false;
-                boolean isEnterprise = false;
+                boolean isImage = false;    // 큰 제품 이미지
+                boolean isName = false; // 품목명
+                boolean isEnterprise = false;   // 업체명
+                boolean isItemSeq = false;  // 품목 일련번호
+                boolean isClassNo = false;  // 분류번호
+                boolean isClassName = false;    // 분류명
+                boolean isEtcOtcName = false;   // 구분 (전문/일반)
+                boolean isEngName = false;  // 제품영문명
+                boolean ieEdiCode = false;  // 보험코드
+
                 boolean isTotalCount = false;
                 boolean isPageNo = false;
                 boolean isNumOfRows = false;
@@ -193,13 +200,27 @@ public class SearchMedicineFragment extends Fragment implements TabLayout.OnTabS
                             if(tag.equals("item")){
                                 medicine = new Medicine();
                             }
-                            if (tag.equals("ITEM_IMAGE"))
-                                isImage = true;
+
+                            if (tag.equals("ITEM_SEQ"))
+                                isItemSeq = true;
                             if (tag.equals("ITEM_NAME"))
                                 isName = true;
                             if (tag.equals("ENTP_NAME"))
                                 isEnterprise = true;
+                            if (tag.equals("ITEM_IMAGE"))
+                                isImage = true;
+                            if (tag.equals("CLASS_NO"))
+                                isClassNo = true;
+                            if (tag.equals("CLASS_NAME"))
+                                isClassName = true;
+                            if (tag.equals("ETC_OTC_NAME"))
+                                isEtcOtcName = true;
+                            if (tag.equals("ITEM_ENG_NAME"))
+                                isEngName = true;
+                            if (tag.equals("EDI_CODE"))
+                                ieEdiCode = true;
 
+                            //////////////
                             if(tag.equals("totalCount")){
                                 isTotalCount = true;
                             }
@@ -211,9 +232,9 @@ public class SearchMedicineFragment extends Fragment implements TabLayout.OnTabS
                             }
                             break;
                         case XmlPullParser.TEXT:    // 텍스트 내용 읽음
-                            if(isImage){
-                                medicine.setImageUrl(parser.getText());
-                                isImage = false;
+                            if(isItemSeq) {
+                                medicine.setItemSeq(parser.getText());
+                                isItemSeq = false;
                             }
                             else if(isName) {
                                 medicine.setName(parser.getText());
@@ -224,7 +245,33 @@ public class SearchMedicineFragment extends Fragment implements TabLayout.OnTabS
                                 medicine.setEnterprise(parser.getText());
                                 isEnterprise = false;
                             }
+                            else if(isImage){
+                                medicine.setImageUrl(parser.getText());
+                                isImage = false;
+                            }
+                            else if(isClassNo) {
+                                medicine.setClassNo(parser.getText());
+                                isClassNo = false;
+                            }
+                            else if(isClassName) {
+                                medicine.setClassName(parser.getText());
+                                isClassName = false;
+                            }
+                            else if(isEtcOtcName) {
+                                medicine.setEtcOtcName(parser.getText());
+                                isEtcOtcName = false;
+                            }
+                            else if(isEngName) {
+                                medicine.setEngName(parser.getText());
+                                isEngName = false;
+                            }
+                            else if(ieEdiCode) {
+                                medicine.setEdiCode(parser.getText());
+                                ieEdiCode = false;
+                            }
 
+
+                            //////////////
                             else if(isTotalCount) {
                                 Log.v("data", "totalCount : " + parser.getText());
                                 isTotalCount = false;
