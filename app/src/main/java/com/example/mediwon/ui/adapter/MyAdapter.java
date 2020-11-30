@@ -19,28 +19,22 @@ import com.example.mediwon.R;
 import com.example.mediwon.view_model.Medicine;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements Filterable {
 
-    //private Context context;
-
     private List<Medicine> dataSet;
     private List<Medicine> dataSetAll;
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(ArrayList<Medicine> dataSet) {
-        //this.context = context;
+    // 생성자에서 데이터 리스트를 전달받음
+    public MyAdapter(List<Medicine> dataSet) {
         this.dataSet = dataSet;
-        this.dataSetAll = dataSet;
-        Log.v("adapter", "name : " + dataSetAll.get(0).getName());
+        dataSetAll = new ArrayList<>(dataSet);
     }
 
-    // Provide a reference to the views for each data item
-    // Provide access to all the views for a data item in a view holder
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    // ViewHolder 클래스 : 화면에 표시될 아이템 View를 저장
+    // 자식 View를 포함한 레이아웃 단위의 View를 하나의 ViewHolder로 생성
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         // each data item is just a string in this case
         public ImageView imageView;
@@ -53,109 +47,77 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
             imageView = view.findViewById(R.id.medicineImage);
             nameTextView = view.findViewById(R.id.medicineName);
             enterpriseTextView = view.findViewById(R.id.enterprise);
-            view.setOnClickListener(this);
         }
 
-        // 아이템 클릭 시 이벤트 처리
-        @Override
-        public void onClick(View v) {
-
-            Context context = v.getContext();
-            int position = getAdapterPosition();
-            Intent intent = new Intent(context, MedicineDetailPageActivity.class);
-            intent.putExtra("name", dataSetAll.get(position).getName());
-            intent.putExtra("engName", dataSetAll.get(position).getEngName());
-            //Log.v("adapter", "engName : " + dataSetAll.get(position).getEngName());
-            intent.putExtra("image", dataSetAll.get(position).getImageUrl());
-            intent.putExtra("itemSeq", dataSetAll.get(position).getItemSeq());
-            intent.putExtra("enterprise", dataSetAll.get(position).getEnterprise());
-            intent.putExtra("classNo", dataSetAll.get(position).getClassNo());
-            intent.putExtra("className", dataSetAll.get(position).getClassName());
-            intent.putExtra("etcOtcName", dataSetAll.get(position).getEtcOtcName());
-            intent.putExtra("ediCode", dataSetAll.get(position).getEdiCode());
-            context.startActivity(intent);
-        }
     }
 
-    // Create new views (invoked by the layout manager)
+    // onCreateViewHolder() : 새로운 아이템 View를 위한 ViewHolder 객체를 생성하여 리턴
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        // create a new view. ViewHolder에 넣어줄 view를 찾음
+        // Create a new view. ViewHolder에 넣어줄 View를를 찾음
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_item, parent, false);
 
-        // ViewHolder를 선언하고 view를 넣어줌
+        // ViewHolder를 선언하고 View를 넣어줌
         ViewHolder viewHolder = new ViewHolder(view);
 
         return viewHolder;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    // onBindViewHolder() : position에 해당하는 데이터를 각 ViewHolder의 아이템 View에 표시
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        //Glide.with(context)  // Activity 자리. 안 되면 context 넣어보기
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        // Bind data
         Glide.with(holder.imageView)
-                .load(dataSetAll.get(position).getImageUrl())
+                .load(dataSet.get(position).getImageUrl())
                 .into(holder.imageView);
-        holder.nameTextView.setText(dataSetAll.get(position).getName());
-        holder.enterpriseTextView.setText(dataSetAll.get(position).getEnterprise());
+        holder.nameTextView.setText(dataSet.get(position).getName());
+        holder.enterpriseTextView.setText(dataSet.get(position).getEnterprise());
+
+        // 아이템 클릭 시 이벤트 처리
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Log.v("adapter", "position : " + position);
+                Intent intent = new Intent(context, MedicineDetailPageActivity.class);
+                intent.putExtra("name", dataSet.get(position).getName());
+                intent.putExtra("engName", dataSet.get(position).getEngName());
+                intent.putExtra("image", dataSet.get(position).getImageUrl());
+                intent.putExtra("itemSeq", dataSet.get(position).getItemSeq());
+                intent.putExtra("enterprise", dataSet.get(position).getEnterprise());
+                intent.putExtra("classNo", dataSet.get(position).getClassNo());
+                intent.putExtra("className", dataSet.get(position).getClassName());
+                intent.putExtra("etcOtcName", dataSet.get(position).getEtcOtcName());
+                intent.putExtra("ediCode", dataSet.get(position).getEdiCode());
+                context.startActivity(intent);
+            }
+        });
     }
 
     // Return the size of dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return dataSetAll.size();
+        return dataSet.size();
     }
 
     @Override
     public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                String character = constraint.toString();
-                if(character.isEmpty()) {
-                    dataSetAll = dataSet;
-                }
-                else {
-                    List<Medicine> filterList = new ArrayList<>();
-                    for(Medicine data: dataSetAll) {
-                        if(data.getName().toLowerCase().contains(character.toLowerCase())) {
-                            filterList.add(data);
-                        }
-                    }
-
-                    dataSetAll = filterList;
-                }
-
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = dataSetAll;
-
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                dataSetAll = (ArrayList<Medicine>) results.values;
-                notifyDataSetChanged();
-            }
-        };
+        return filter;
     }
 
-    /*
-    Filter filter = new Filter() {
-
-        // run on background thread
+    private Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
+            List<Medicine> filteredList = new ArrayList<>();
 
-            List<String> filteredList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0) {
+                filteredList.addAll(dataSetAll);
+            } else {
+                String filterPattern  = constraint.toString().toLowerCase().trim();
 
-            if(constraint.toString().isEmpty()) {
-                filteredList.addAll(Collections.singleton(dataSetAll.toString()));
-            }
-            else {
-                for (String data: dataSetAll) {
-                    if(data.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                for(Medicine data : dataSetAll) {
+                    if(data.getName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(data);
                     }
                 }
@@ -167,15 +129,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
             return filterResults;
         }
 
-        // run on a UI thread
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             dataSet.clear();
-            dataSet.addAll((Collection<? extends Medicine>) results.values);
+            dataSet.addAll((List) results.values);
             notifyDataSetChanged();
         }
     };
-    */
 
     /*
     public void clear() {

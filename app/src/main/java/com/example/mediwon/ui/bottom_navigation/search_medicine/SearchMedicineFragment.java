@@ -1,19 +1,7 @@
 package com.example.mediwon.ui.bottom_navigation.search_medicine;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,9 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.mediwon.R;
 import com.example.mediwon.ui.adapter.MyAdapter;
-import com.example.mediwon.ui.bottom_navigation.home.HomeFragment;
 import com.example.mediwon.view_model.Medicine;
 import com.google.android.material.tabs.TabLayout;
 
@@ -35,6 +29,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchMedicineFragment extends Fragment implements TabLayout.OnTabSelectedListener {
 
@@ -44,7 +39,7 @@ public class SearchMedicineFragment extends Fragment implements TabLayout.OnTabS
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private ArrayList<Medicine> dataSet;
+    private List<Medicine> dataSet;
     private Medicine medicine;
 
     private String key = "lZqRHe1K6Pa5E1JupiOr%2BKKr8Kg6IF0jJjCCrzr9C3oyTdfjAs92SewVuwo0em58nVWDhZNMDlKAaohxk0Khtw%3D%3D";
@@ -82,29 +77,34 @@ public class SearchMedicineFragment extends Fragment implements TabLayout.OnTabS
         super.onCreate(savedInstanceState);
     }
 
+    // onCreateOptionsMenu : 액티비티가 시작될 때 호출되는 함수. 액티비티 Life Cycle 내 한 번만 호출
+    // MenuItem 생성과 초기화
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
+        //super.onCreateOptionsMenu(menu, inflater);
 
-        // top_app_bar.xml 등록
-        inflater.inflate(R.menu.top_app_bar, menu);
+        inflater.inflate(R.menu.top_app_bar, menu); // top_app_bar.xml 등록
         MenuItem menuItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setMaxWidth(Integer.MAX_VALUE);
-        searchView.setQueryHint("제품명 / 증상 / 효능을 입력하세요");
+        searchView.setQueryHint("제품명을 입력하세요");
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            // 검색 버튼을 눌렀을 때 호출
             @Override
             public boolean onQueryTextSubmit(String query) {
-                ((MyAdapter)adapter).getFilter().filter(query);
-                Log.v("data", "query : " + query);
+                //((MyAdapter)adapter).getFilter().filter(query);
+                //Log.v("data", "query : " + query);
                 return false;
             }
 
+            // 텍스트가 바뀔 때마다 호출
             @Override
             public boolean onQueryTextChange(String newText) {
                 ((MyAdapter)adapter).getFilter().filter(newText);
                 Log.v("data", "newText : " + newText);
-                return false;
+                return true;
             }
         });
 
