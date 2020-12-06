@@ -1,4 +1,4 @@
-package com.example.mediwon.ui.bottom_navigation.search_medicine;
+package com.example.mediwon.ui.bottom_navigation.search_ingredients;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,13 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mediwon.R;
-import com.example.mediwon.ui.adapter.SearchMedicineAdapter;
-import com.example.mediwon.view_model.Medicine;
-import com.google.android.material.tabs.TabLayout;
+import com.example.mediwon.ui.adapter.SearchIngredientAdapter;
+import com.example.mediwon.view_model.Ingredient;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -31,35 +30,34 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchMedicineFragment extends Fragment {
+public class SearchIngredientsFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private List<Medicine> dataSet;
-    private Medicine medicine;
+    private List<Ingredient> dataSet;
+    private Ingredient ingredient;
 
     private String key = "lZqRHe1K6Pa5E1JupiOr%2BKKr8Kg6IF0jJjCCrzr9C3oyTdfjAs92SewVuwo0em58nVWDhZNMDlKAaohxk0Khtw%3D%3D";
     private String requestUrl;
-    //private int pageNo = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_search_medicine, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_search_ingredients, container, false);
 
         /*  RecyclerView    */
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
 
-        // GridLayoutManager 사용
-        layoutManager = new GridLayoutManager(getActivity(), 2);
+        // LinearLayoutManager 사용
+        layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
         /*  AsyncTask    */
-        MedicineGrainIdentificationInfoService asyncTask = new MedicineGrainIdentificationInfoService();
+        getMajorComponentNameCodeListService asyncTask = new getMajorComponentNameCodeListService();
         asyncTask.execute();
 
         return rootView;
@@ -81,23 +79,21 @@ public class SearchMedicineFragment extends Fragment {
         MenuItem menuItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setMaxWidth(Integer.MAX_VALUE);
-        searchView.setQueryHint("제품명을 입력하세요");
+        searchView.setQueryHint("성분명을 입력하세요");
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             // 검색 버튼을 눌렀을 때 호출
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //((SearchMedicineAdapter)adapter).getFilter().filter(query);
-                //Log.v("data", "query : " + query);
                 return false;
             }
 
             // 텍스트가 바뀔 때마다 호출
             @Override
             public boolean onQueryTextChange(String newText) {
-                ((SearchMedicineAdapter)adapter).getFilter().filter(newText);
-                Log.v("data", "newText : " + newText);
+                ((SearchIngredientAdapter)adapter).getFilter().filter(newText);
+                //Log.v("data", "newText : " + newText);
                 return true;
             }
         });
@@ -106,30 +102,29 @@ public class SearchMedicineFragment extends Fragment {
 
     /*  AsyncTask    */
     // AsyncTask<doInBackground, onProgressUpdate, onPostExecute의 매개변수 자료형>
-    public class MedicineGrainIdentificationInfoService extends AsyncTask<String, Void, String> {
+    public class getMajorComponentNameCodeListService extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... strings) {
 
             // numOfRows : 한 페이지에 받아올 최대 개수
             // numOfRows에 따라 페이지의 개수(pageNo; 페이지 번호)가 달라짐
-            requestUrl = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList?ServiceKey="
-                    + key + "&pageNo=1&numOfRows=80";
+            requestUrl = "http://apis.data.go.kr/B551182/msupCmpnMeftInfoService/getMajorCmpnNmCdList?ServiceKey="
+                    + key + "&numOfRows=200&pageNo=1&meftDivNo=1";
 
             try {
-                boolean isImage = false;    // 큰 제품 이미지
-                boolean isName = false; // 품목명
-                boolean isEnterprise = false;   // 업체명
-                boolean isItemSeq = false;  // 품목 일련번호
-                boolean isClassNo = false;  // 분류번호
-                boolean isClassName = false;    // 분류명
-                boolean isEtcOtcName = false;   // 구분 (전문/일반)
-                boolean isEngName = false;  // 제품영문명
-                boolean ieEdiCode = false;  // 보험코드
+                boolean isDivNm = false;    // 분류명
+                boolean isFomnTpNm = false; // 제형구분명
+                boolean isGnlNm = false;   // 일반명
+                boolean isGnlNmCd = false;  // 일반명코드
+                boolean isInjcPthNm = false;  // 투여경로명
+                boolean isIqtyTxt = false;    // 함량내용
+                boolean isMeftDivNo = false;   // 약효분류번호
+                boolean isUnit = false;  // 단위
 
-                boolean isTotalCount = false;
-                boolean isPageNo = false;
                 boolean isNumOfRows = false;
+                boolean isPageNo = false;
+                boolean isTotalCount = false;
 
                 URL url = new URL(requestUrl); // 문자열로 된 request url을 URL 객체로 생성
                 InputStream inputStream = url.openStream(); // url 위치로 입력스트림 연결
@@ -142,7 +137,6 @@ public class SearchMedicineFragment extends Fragment {
                 String tag;
                 int eventType = parser.getEventType();  // getEventType()를 통해 파서의 현재 이벤트 상태 확인
 
-
                 while(eventType != XmlPullParser.END_DOCUMENT){
 
                     tag = parser.getName();
@@ -152,105 +146,93 @@ public class SearchMedicineFragment extends Fragment {
                             dataSet = new ArrayList<>();
                             break;
                         case XmlPullParser.END_DOCUMENT:
-                            /*
-                            pageNo++;
-                            if(pageNo <= 5) {
-                                requestUrl = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList?ServiceKey="
-                                        + key + "&pageNo=" + pageNo;
-                            }*/
                             break;
                         case XmlPullParser.END_TAG: // 끝 태그 읽음
                             if(tag.equals("item")) {
-                                dataSet.add(medicine);
+                                dataSet.add(ingredient);
                             }
                             break;
                         case XmlPullParser.START_TAG:   // 시작 태그를 읽으면 실행
                             if(tag.equals("item")){
-                                medicine = new Medicine();
+                                ingredient = new Ingredient();
                             }
 
-                            if (tag.equals("ITEM_SEQ"))
-                                isItemSeq = true;
-                            if (tag.equals("ITEM_NAME"))
-                                isName = true;
-                            if (tag.equals("ENTP_NAME"))
-                                isEnterprise = true;
-                            if (tag.equals("ITEM_IMAGE"))
-                                isImage = true;
-                            if (tag.equals("CLASS_NO"))
-                                isClassNo = true;
-                            if (tag.equals("CLASS_NAME"))
-                                isClassName = true;
-                            if (tag.equals("ETC_OTC_NAME"))
-                                isEtcOtcName = true;
-                            if (tag.equals("ITEM_ENG_NAME"))
-                                isEngName = true;
-                            if (tag.equals("EDI_CODE"))
-                                ieEdiCode = true;
+                            if (tag.equals("divNm"))
+                                isDivNm = true;
+                            if (tag.equals("fomnTpNm"))
+                                isFomnTpNm = true;
+                            if (tag.equals("gnlNm"))
+                                isGnlNm = true;
+                            if (tag.equals("gnlNmCd"))
+                                isGnlNmCd = true;
+                            if (tag.equals("injcPthNm"))
+                                isInjcPthNm = true;
+                            if (tag.equals("iqtyTxt"))
+                                isIqtyTxt = true;
+                            if (tag.equals("meftDivNo"))
+                                isMeftDivNo = true;
+                            if (tag.equals("unit"))
+                                isUnit = true;
 
                             //////////////
-                            if(tag.equals("totalCount")){
-                                isTotalCount = true;
+                            if(tag.equals("numOfRows")) {
+                                isNumOfRows = true;
                             }
                             if(tag.equals("pageNo")) {
                                 isPageNo = true;
                             }
-                            if(tag.equals("numOfRows")) {
-                                isNumOfRows = true;
+                            if(tag.equals("totalCount")){
+                                isTotalCount = true;
                             }
                             break;
                         case XmlPullParser.TEXT:    // 텍스트 내용 읽음
-                            if(isItemSeq) {
-                                medicine.setItemSeq(parser.getText());
-                                isItemSeq = false;
+                            if(isDivNm) {
+                                ingredient.setDivNm(parser.getText());
+                                isDivNm = false;
                             }
-                            else if(isName) {
-                                medicine.setName(parser.getText());
-                                isName = false;
-                                Log.v("data", "제품명 : " + parser.getText());
+                            else if(isFomnTpNm) {
+                                ingredient.setFomnTpNm(parser.getText());
+                                isFomnTpNm = false;
                             }
-                            else if(isEnterprise) {
-                                medicine.setEnterprise(parser.getText());
-                                isEnterprise = false;
+                            else if(isGnlNm) {
+                                ingredient.setGnlNm(parser.getText());
+                                isGnlNm = false;
+                                Log.v("data", "성분명 : " + parser.getText());
                             }
-                            else if(isImage){
-                                medicine.setImageUrl(parser.getText());
-                                isImage = false;
+                            else if(isGnlNmCd){
+                                ingredient.setGnlNmCd(parser.getText());
+                                isGnlNmCd = false;
                             }
-                            else if(isClassNo) {
-                                medicine.setClassNo(parser.getText());
-                                isClassNo = false;
+                            else if(isInjcPthNm) {
+                                ingredient.setInjcPthNm(parser.getText());
+                                isInjcPthNm = false;
                             }
-                            else if(isClassName) {
-                                medicine.setClassName(parser.getText());
-                                isClassName = false;
+                            else if(isIqtyTxt) {
+                                ingredient.setIqtyTxt(parser.getText());
+                                isIqtyTxt = false;
                             }
-                            else if(isEtcOtcName) {
-                                medicine.setEtcOtcName(parser.getText());
-                                isEtcOtcName = false;
+                            else if(isMeftDivNo) {
+                                ingredient.setMeftDivNo(parser.getText());
+                                isMeftDivNo = false;
                             }
-                            else if(isEngName) {
-                                medicine.setEngName(parser.getText());
-                                isEngName = false;
-                            }
-                            else if(ieEdiCode) {
-                                medicine.setEdiCode(parser.getText());
-                                ieEdiCode = false;
+                            else if(isUnit) {
+                                ingredient.setUnit(parser.getText());
+                                isUnit = false;
                             }
 
 
                             //////////////
-                            else if(isTotalCount) {
-                                Log.v("data", "totalCount : " + parser.getText());
-                                isTotalCount = false;
+                            else if(isNumOfRows) {
+                                Log.v("data", "numOfRows : " + parser.getText());
+                                isNumOfRows = false;
                             }
                             else if(isPageNo) {
                                 Log.v("data", "pageNo : " + parser.getText());
                                 isPageNo = false;
                             }
-                            else if(isNumOfRows) {
-                                Log.v("data", "numOfRows : " + parser.getText());
-                                isNumOfRows = false;
+                            else if(isTotalCount) {
+                                Log.v("data", "totalCount : " + parser.getText());
+                                isTotalCount = false;
                             }
                             break;
                     }
@@ -267,8 +249,7 @@ public class SearchMedicineFragment extends Fragment {
             super.onPostExecute(s);
 
             // Adapter를 통해 데이터 연결
-            //adapter = new SearchMedicineAdapter(getActivity().getApplicationContext(), dataSet);
-            adapter = new SearchMedicineAdapter(dataSet);
+            adapter = new SearchIngredientAdapter(dataSet);
             recyclerView.setAdapter(adapter);
         }
     }

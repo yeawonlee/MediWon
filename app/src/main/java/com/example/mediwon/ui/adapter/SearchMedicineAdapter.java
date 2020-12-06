@@ -21,13 +21,13 @@ import com.example.mediwon.view_model.Medicine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements Filterable {
+public class SearchMedicineAdapter extends RecyclerView.Adapter<SearchMedicineAdapter.ViewHolder> implements Filterable {
 
     private List<Medicine> dataSet;
     private List<Medicine> dataSetAll;
 
     // 생성자에서 데이터 리스트를 전달받음
-    public MyAdapter(List<Medicine> dataSet) {
+    public SearchMedicineAdapter(List<Medicine> dataSet) {
         this.dataSet = dataSet;
         dataSetAll = new ArrayList<>(dataSet);
     }
@@ -53,7 +53,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
 
     // onCreateViewHolder() : 새로운 아이템 View를 위한 ViewHolder 객체를 생성하여 리턴
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SearchMedicineAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         // Create a new view. ViewHolder에 넣어줄 View를 찾음
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_item, parent, false);

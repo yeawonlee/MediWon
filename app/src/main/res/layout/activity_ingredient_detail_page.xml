@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/medicine_detail_page_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".IngredientDetailPageActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/detailAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white"
+            app:menu="@menu/detail_page_app_bar"
+            app:title="@string/detail_page" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/gnlNm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="일반명"
+            android:textStyle="bold"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="#7CB342"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="분류명"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:padding="4dp"/>
+
+        <TextView
+            android:id="@+id/divNm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="분류명"
+            android:textSize="18dp"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CFCFCF"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="제형 구분명"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:padding="4dp"/>
+
+        <TextView
+            android:id="@+id/fomnTpNm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="제형 구분명"
+            android:textSize="18dp"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CFCFCF"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="일반명 코드"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:padding="4dp"/>
+
+        <TextView
+            android:id="@+id/gnlNmCd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="일반명 코드"
+            android:textSize="18dp"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CFCFCF"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="투여 경로명"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:padding="4dp"/>
+
+        <TextView
+            android:id="@+id/injcPthNm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="투여 경로명"
+            android:textSize="18dp"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CFCFCF"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="함량 내용"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:padding="4dp"/>
+
+        <TextView
+            android:id="@+id/iqtyTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="함량 내용"
+            android:textSize="18dp"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CFCFCF"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="약효 분류번호"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:padding="4dp"/>
+
+        <TextView
+            android:id="@+id/meftDivNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="약효 분류번호"
+            android:textSize="18dp"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CFCFCF"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="단위"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:padding="4dp"/>
+
+        <TextView
+            android:id="@+id/unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="단위"
+            android:textSize="18dp"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+    </LinearLayout>
+</LinearLayout>

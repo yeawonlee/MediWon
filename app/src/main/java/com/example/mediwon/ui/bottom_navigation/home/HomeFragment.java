@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mediwon.R;
-import com.example.mediwon.ui.adapter.MyAdapter;
+import com.example.mediwon.ui.adapter.SearchMedicineAdapter;
 import com.example.mediwon.view_model.Medicine;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -125,8 +125,8 @@ public class HomeFragment extends Fragment {
             super.onPostExecute(s);
 
             // Adapter를 통해 데이터 연결
-            //adapter = new MyAdapter(getActivity().getApplicationContext(), dataSet);
-            adapter = new MyAdapter(dataSet);
+            //adapter = new SearchMedicineAdapter(getActivity().getApplicationContext(), dataSet);
+            adapter = new SearchMedicineAdapter(dataSet);
             recyclerView.setAdapter(adapter);
         }
     }

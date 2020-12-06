@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigationSearchMedicineByIngredients"
-        android:name="com.example.mediwon.ui.bottom_navigation.search_medicine_by_ingredients.SearchMedicineByIngredientsFragment"
+        android:name="com.example.mediwon.ui.bottom_navigation.search_ingredients.SearchIngredientsFragment"
         android:label="@string/bottom_nav_2"
-        tools:layout="@layout/fragment_search_medicine_by_ingredients" />
+        tools:layout="@layout/fragment_search_ingredients" />
 
     <fragment
         android:id="@+id/navigationBookmark"
