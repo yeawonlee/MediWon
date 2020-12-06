@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/medicine_detail_page_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -30,164 +32,36 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tab_medicineInfo"
             android:text="@string/detail_page_tab1" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tab_identificationInfo"
             android:text="@string/detail_page_tab2" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tab_ingredientInfo"
             android:text="@string/detail_page_tab3" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tab_effectInfo"
             android:text="@string/detail_page_tab4" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tab_sideEffectInfo"
             android:text="@string/detail_page_tab5" />
     </com.google.android.material.tabs.TabLayout>
 
-    <LinearLayout
+    <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/detailAppBar"
-        android:layout_margin="14dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/medicineName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:text="제품명"
-            android:textAppearance="?attr/textAppearanceHeadline5" />
-
-        <TextView
-            android:id="@+id/medicineEngName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="제품영문명"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
-
-        <ImageView
-            android:id="@+id/medicineImage"
-            android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="fitXY" />
-    </LinearLayout>
-
-    <TableLayout
-        android:stretchColumns="*"
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight = "1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="품목일련번호"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:id="@+id/itemSeq"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="8"
-                android:text="품목일련번호"
-                android:textSize="20dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight = "1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="업체명"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:id="@+id/enterprise"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="8"
-                android:text="업체명"
-                android:textSize="20dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight = "1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="분류"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:id="@+id/classNoName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="8"
-                android:text="분류번호 / 분류명"
-                android:textSize="20dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight = "1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="구분"
-                android:textSize="18dp"/>
-
-            <TextView
-                android:id="@+id/itemEtcOtcName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="8"
-                android:text="전문/일반"
-                android:textSize="20dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight = "1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="보험코드"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/ediCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="8"
-                android:text="보험코드"
-                android:textSize="20dp"/>
-        </TableRow>
-    </TableLayout>
+        android:layout_height="match_parent"
+        android:id="@+id/viewPager" />
 </LinearLayout>

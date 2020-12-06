@@ -55,7 +55,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implem
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        // Create a new view. ViewHolder에 넣어줄 View를를 찾음
+        // Create a new view. ViewHolder에 넣어줄 View를 찾음
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_item, parent, false);
 
         // ViewHolder를 선언하고 View를 넣어줌
