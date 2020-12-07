@@ -19,8 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mediwon.R;
 import com.example.mediwon.ui.adapter.SearchMedicineAdapter;
-import com.example.mediwon.view_model.Medicine;
-import com.google.android.material.tabs.TabLayout;
+import com.example.mediwon.view_model.MedicineIdentification;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -37,8 +36,8 @@ public class SearchMedicineFragment extends Fragment {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private List<Medicine> dataSet;
-    private Medicine medicine;
+    private List<MedicineIdentification> dataSet;
+    private MedicineIdentification medicine;
 
     private String key = "lZqRHe1K6Pa5E1JupiOr%2BKKr8Kg6IF0jJjCCrzr9C3oyTdfjAs92SewVuwo0em58nVWDhZNMDlKAaohxk0Khtw%3D%3D";
     private String requestUrl;
@@ -166,7 +165,7 @@ public class SearchMedicineFragment extends Fragment {
                             break;
                         case XmlPullParser.START_TAG:   // 시작 태그를 읽으면 실행
                             if(tag.equals("item")){
-                                medicine = new Medicine();
+                                medicine = new MedicineIdentification();
                             }
 
                             if (tag.equals("ITEM_SEQ"))

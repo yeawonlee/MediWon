@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mediwon.R;
 import com.example.mediwon.ui.adapter.SearchMedicineAdapter;
-import com.example.mediwon.view_model.Medicine;
+import com.example.mediwon.view_model.MedicineIdentification;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -28,8 +28,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private ArrayList<Medicine> dataSet;
-    private Medicine medicine;
+    private ArrayList<MedicineIdentification> dataSet;
+    private MedicineIdentification medicine;
 
     private String key = "lZqRHe1K6Pa5E1JupiOr%2BKKr8Kg6IF0jJjCCrzr9C3oyTdfjAs92SewVuwo0em58nVWDhZNMDlKAaohxk0Khtw%3D%3D";
     private String requestUrl;
@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
                             break;
                         case XmlPullParser.START_TAG:
                             if(parser.getName().equals("item")){
-                                medicine = new Medicine();
+                                medicine = new MedicineIdentification();
                             }
                             if (parser.getName().equals("ITEM_IMAGE")) isImage = true;
                             if (parser.getName().equals("ITEM_NAME")) isName = true;

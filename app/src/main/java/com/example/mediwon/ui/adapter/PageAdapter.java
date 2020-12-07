@@ -28,12 +28,26 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
+        Fragment fragment;
+        Bundle bundle = new Bundle();
+
         switch (position) {
             case 0:
-                Fragment fragment = new MedicineInfoFragment();
+                fragment = new MedicineInfoFragment();
 
                 // MedicineDetailPageActivity에서 전달 받은 데이터를 Bundle에 넣어 MedicineInfoFragment의 인자로 전달
-                Bundle bundle = new Bundle();
+                bundle.putString("name", intent.getExtras().getString("name"));
+                bundle.putString("engName", intent.getExtras().getString("engName"));
+                bundle.putString("image", intent.getExtras().getString("image"));
+                bundle.putString("ediCode", intent.getExtras().getString("ediCode"));
+
+                fragment.setArguments(bundle);
+                return fragment;
+            case 1:
+                fragment = new IdentificationInfoFragment();
+
+                // MedicineDetailPageActivity에서 전달 받은 데이터를 Bundle에 넣어 IdentificationInfoFragment의 인자로 전달
                 bundle.putString("name", intent.getExtras().getString("name"));
                 //Log.v("bundle", bundle.getString("name"));
                 bundle.putString("engName", intent.getExtras().getString("engName"));
@@ -48,8 +62,6 @@ public class PageAdapter extends FragmentStatePagerAdapter {
                 fragment.setArguments(bundle);
                 //Log.v("detail", bundle.toString());
                 return fragment;
-            case 1:
-                return new IdentificationInfoFragment();
             case 2:
                 return new IngredientInfoFragment();
             case 3:

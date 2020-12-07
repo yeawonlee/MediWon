@@ -16,18 +16,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.mediwon.MedicineDetailPageActivity;
 import com.example.mediwon.R;
-import com.example.mediwon.view_model.Medicine;
+import com.example.mediwon.view_model.MedicineIdentification;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchMedicineAdapter extends RecyclerView.Adapter<SearchMedicineAdapter.ViewHolder> implements Filterable {
 
-    private List<Medicine> dataSet;
-    private List<Medicine> dataSetAll;
+    private List<MedicineIdentification> dataSet;
+    private List<MedicineIdentification> dataSetAll;
 
     // 생성자에서 데이터 리스트를 전달받음
-    public SearchMedicineAdapter(List<Medicine> dataSet) {
+    public SearchMedicineAdapter(List<MedicineIdentification> dataSet) {
         this.dataSet = dataSet;
         dataSetAll = new ArrayList<>(dataSet);
     }
@@ -109,14 +109,14 @@ public class SearchMedicineAdapter extends RecyclerView.Adapter<SearchMedicineAd
     private Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<Medicine> filteredList = new ArrayList<>();
+            List<MedicineIdentification> filteredList = new ArrayList<>();
 
             if(constraint == null || constraint.length() == 0) {
                 filteredList.addAll(dataSetAll);
             } else {
                 String filterPattern  = constraint.toString().toLowerCase().trim();
 
-                for(Medicine data : dataSetAll) {
+                for(MedicineIdentification data : dataSetAll) {
                     if(data.getName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(data);
                     }
@@ -146,7 +146,7 @@ public class SearchMedicineAdapter extends RecyclerView.Adapter<SearchMedicineAd
         dataSet.remove(dataSet.get(position));
     }
 
-    public void add(Medicine medicine) {
+    public void add(MedicineIdentification medicine) {
         dataSet.add(medicine);
     }
     */

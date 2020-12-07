@@ -59,16 +59,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="품목 일련번호"
+                    android:text="주성분"
                     android:textStyle="bold"
                     android:textSize="18dp"/>
 
                 <TextView
-                    android:id="@+id/itemSeq"
+                    android:id="@+id/itemIngredientName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="6"
-                    android:text="품목일련번호"
+                    android:text="주성분"
                     android:textSize="20dp"/>
             </TableRow>
 
@@ -118,11 +118,11 @@
                     android:textSize="18dp"/>
 
                 <TextView
-                    android:id="@+id/classNoName"
+                    android:id="@+id/productType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="6"
-                    android:text="분류번호 / 분류명"
+                    android:text="분류명"
                     android:textSize="20dp"/>
             </TableRow>
 
@@ -145,7 +145,7 @@
                     android:textSize="18dp"/>
 
                 <TextView
-                    android:id="@+id/itemEtcOtcName"
+                    android:id="@+id/specialtyPublic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="6"
