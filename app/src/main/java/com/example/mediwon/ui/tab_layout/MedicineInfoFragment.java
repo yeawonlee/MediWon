@@ -13,10 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.example.mediwon.R;
-import com.example.mediwon.ui.adapter.SearchMedicineAdapter;
-import com.example.mediwon.ui.bottom_navigation.search_medicine.SearchMedicineFragment;
 import com.example.mediwon.view_model.Medicine;
-import com.example.mediwon.view_model.MedicineIdentification;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -24,7 +21,6 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 
 public class MedicineInfoFragment extends Fragment {
 
@@ -36,10 +32,10 @@ public class MedicineInfoFragment extends Fragment {
     private TextView ediCodeTextView;   // 보험코드
 
     /*  의약품 제품 허가정보 서비스 데이터 연결 */
-    private TextView enterpriseTextView;    // 업체명
-    private TextView specialtyPublicTextView;    // 전문/일반구분
-    private TextView productTypeTextView;     // 분류명
     private TextView itemIngredientNameTextView;   // 주성분
+    private TextView enterpriseTextView;    // 업체명
+    private TextView productTypeTextView;     // 분류명
+    private TextView specialtyPublicTextView;    // 전문/일반구분
 
     private Medicine medicine;
     private String medicineName;
@@ -57,11 +53,15 @@ public class MedicineInfoFragment extends Fragment {
         nameTextView = rootView.findViewById(R.id.medicineName);
         engNameTextView = rootView.findViewById(R.id.medicineEngName);
         imageView = rootView.findViewById(R.id.medicineImage);
-        itemIngredientNameTextView = rootView.findViewById(R.id.ingredientName);
+        itemIngredientNameTextView = rootView.findViewById(R.id.itemIngredientName);
         enterpriseTextView = rootView.findViewById(R.id.enterprise);
         productTypeTextView = rootView.findViewById(R.id.productType);
         specialtyPublicTextView = rootView.findViewById(R.id.specialtyPublic);
         ediCodeTextView = rootView.findViewById(R.id.ediCode);
+
+        /*  AsyncTask    */
+        MedicineProductPermissionInfoService asyncTask = new MedicineProductPermissionInfoService();
+        asyncTask.execute();
 
         /*  Bundle을 통해 전달 받은 의약품 낱알식별정보(DB) 서비스 데이터 연결  */
         if (getArguments() != null) {
@@ -79,15 +79,8 @@ public class MedicineInfoFragment extends Fragment {
 
             ediCodeTextView.setText(getArguments().getString("ediCode"));
         }
-
-        /*  AsyncTask    */
-        MedicineProductPermissionInfoService asyncTask = new MedicineProductPermissionInfoService();
-        asyncTask.execute();
 /*
-        enterpriseTextView.setText(medicine.getEntpriseName());
-        specialtyPublicTextView.setText(medicine.getSpecialtyPublic());
-        productTypeTextView.setText(medicine.getProductType());
-        itemIngredientNameTextView.setText(medicine.getItemIngredientName());
+
 */
         return rootView;
     }
@@ -182,8 +175,9 @@ public class MedicineInfoFragment extends Fragment {
                         case XmlPullParser.END_TAG: // 끝 태그 읽음
                             if(tag.equals("item")) {
                                 Log.v("detail", "END_TAG");
+                                break;
                             }
-                            break;
+
                         case XmlPullParser.END_DOCUMENT:
                             Log.v("detail", "END_DOCUMENT");
                             break;
@@ -199,12 +193,13 @@ public class MedicineInfoFragment extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-/*
+            //Log.v("detail", "onPostExecute : " + medicine.getItemName());
+
             enterpriseTextView.setText(medicine.getEntpriseName());
             specialtyPublicTextView.setText(medicine.getSpecialtyPublic());
             productTypeTextView.setText(medicine.getProductType());
             itemIngredientNameTextView.setText(medicine.getItemIngredientName());
-*/
+
         }
     }
 }

@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -46,7 +46,7 @@
         <TableLayout
             android:stretchColumns="*"
             android:layout_width="match_parent"
-            android:layout_height="240dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp">
 
@@ -68,13 +68,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="6"
-                    android:text="주성분"
                     android:textSize="20dp"/>
             </TableRow>
 
             <TextView
                 android:layout_height="1dp"
                 android:background="#CFCFCF"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp" />
 
             <TableRow
@@ -95,13 +95,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="6"
-                    android:text="업체명"
                     android:textSize="20dp"/>
             </TableRow>
 
             <TextView
                 android:layout_height="1dp"
                 android:background="#CFCFCF"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp" />
 
             <TableRow
@@ -122,13 +122,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="6"
-                    android:text="분류명"
                     android:textSize="20dp"/>
             </TableRow>
 
             <TextView
                 android:layout_height="1dp"
                 android:background="#CFCFCF"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp" />
 
             <TableRow
@@ -149,13 +149,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="6"
-                    android:text="전문/일반"
                     android:textSize="20dp"/>
             </TableRow>
 
             <TextView
                 android:layout_height="1dp"
                 android:background="#CFCFCF"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp" />
 
             <TableRow
@@ -176,7 +176,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_span="6"
-                    android:text="보험코드"
                     android:textSize="20dp"/>
             </TableRow>
         </TableLayout>
