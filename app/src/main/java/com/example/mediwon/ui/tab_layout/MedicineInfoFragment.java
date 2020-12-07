@@ -25,17 +25,17 @@ import java.net.URL;
 public class MedicineInfoFragment extends Fragment {
 
     /*  의약품 낱알식별정보(DB) 서비스 데이터 연결 */
-    private String imageUrl;    // 큰 제품 이미지
-    private ImageView imageView;    // 큰 제품 이미지
-    private TextView nameTextView;  // 품목명
-    private TextView engNameTextView;   // 제품영문명
-    private TextView ediCodeTextView;   // 보험코드
+    private String imageUrl;                     // 큰 제품 이미지
+    private ImageView imageView;                 // 큰 제품 이미지
+    private TextView nameTextView;               // 품목명
+    private TextView enterpriseTextView;         // 업체명
+    private TextView productTypeTextView;        // 분류명
+    private TextView specialtyPublicTextView;    // 전문/일반구분
+    private TextView engNameTextView;            // 제품영문명
+    private TextView ediCodeTextView;            // 보험코드
 
     /*  의약품 제품 허가정보 서비스 데이터 연결 */
     private TextView itemIngredientNameTextView;   // 주성분
-    private TextView enterpriseTextView;    // 업체명
-    private TextView productTypeTextView;     // 분류명
-    private TextView specialtyPublicTextView;    // 전문/일반구분
 
     private Medicine medicine;
     private String medicineName;
@@ -68,8 +68,6 @@ public class MedicineInfoFragment extends Fragment {
             medicineName = getArguments().getString("name");
 
             nameTextView.setText(medicineName);
-            //Log.v("detail", "bundle : " + getArguments().getString("name"));
-            //Log.v("detail", "nameTextView : " + nameTextView.getText().toString());
             engNameTextView.setText(getArguments().getString("engName"));
 
             imageUrl = getArguments().getString("image");
@@ -77,6 +75,12 @@ public class MedicineInfoFragment extends Fragment {
                     .load(imageUrl)
                     .into(imageView);
 
+            enterpriseTextView.setText(getArguments().getString("enterprise"));
+            String classNo = getArguments().getString("classNo");
+            String className = getArguments().getString("className");
+            productTypeTextView.setText(classNo + " (" + className + ")");
+
+            specialtyPublicTextView.setText(getArguments().getString("etcOtcName"));
             ediCodeTextView.setText(getArguments().getString("ediCode"));
         }
 /*
@@ -98,9 +102,9 @@ public class MedicineInfoFragment extends Fragment {
 
             try {
                 boolean isItemName = false;    // 품목명
-                boolean isEnterpriseName = false;   // 업체명
-                boolean isSpecialtyPublic = false;   // 전문/일반 구분
-                boolean isProductType = false;    // 분류명
+                //boolean isEnterpriseName = false;   // 업체명
+                //boolean isSpecialtyPublic = false;   // 전문/일반 구분
+                //boolean isProductType = false;    // 분류명
                 boolean isItemIngredientName = false;  // 주성분
 
                 URL url = new URL(requestUrl); // 문자열로 된 request url을 URL 객체로 생성
@@ -120,15 +124,15 @@ public class MedicineInfoFragment extends Fragment {
 
                     switch (eventType){
                         case XmlPullParser.START_DOCUMENT:
-                            Log.v("detail", "START_DOCUMENT");
+                            //Log.v("detail", "START_DOCUMENT");
                             break;
                         case XmlPullParser.START_TAG:   // 시작 태그를 읽으면 실행
-                            Log.v("detail", "START_TAG");
+                            //Log.v("detail", "START_TAG");
                             if(tag.equals("item")){
                                 medicine = new Medicine();
-                                Log.v("detail", "item tag start");
+                                //Log.v("detail", "item tag start");
                             }
-
+                            /*
                             if (tag.equals("ITEM_NAME")) {
                                 isItemName = true;
                             }
@@ -141,16 +145,19 @@ public class MedicineInfoFragment extends Fragment {
                             if (tag.equals("PRDUCT_TYPE")) {
                                 isProductType = true;
                             }
+                            */
                             if (tag.equals("ITEM_INGR_NAME")) {
                                 isItemIngredientName = true;
                             }
                             break;
                         case XmlPullParser.TEXT:    // 텍스트 내용 읽음
+                            /*
                             if(isItemName) {
                                 medicine.setItemName(parser.getText());
                                 isItemName = false;
                                 Log.v("detail", "품목명 : " + medicine.getItemName());
                             }
+
                             else if(isEnterpriseName) {
                                 medicine.setEntpriseName(parser.getText());
                                 isEnterpriseName = false;
@@ -166,7 +173,8 @@ public class MedicineInfoFragment extends Fragment {
                                 isProductType = false;
                                 Log.v("detail", "분류명 : " + medicine.getProductType());
                             }
-                            else if(isItemIngredientName) {
+                            */
+                            if(isItemIngredientName) {
                                 medicine.setItemIngredientName(parser.getText());
                                 isItemIngredientName = false;
                                 Log.v("detail", "주성분 : " + medicine.getItemIngredientName());
@@ -174,12 +182,12 @@ public class MedicineInfoFragment extends Fragment {
                             break;
                         case XmlPullParser.END_TAG: // 끝 태그 읽음
                             if(tag.equals("item")) {
-                                Log.v("detail", "END_TAG");
+                                //Log.v("detail", "END_TAG");
                                 break;
                             }
 
                         case XmlPullParser.END_DOCUMENT:
-                            Log.v("detail", "END_DOCUMENT");
+                            //Log.v("detail", "END_DOCUMENT");
                             break;
                     }
                     eventType = parser.next();
@@ -195,9 +203,9 @@ public class MedicineInfoFragment extends Fragment {
             super.onPostExecute(s);
             //Log.v("detail", "onPostExecute : " + medicine.getItemName());
 
-            enterpriseTextView.setText(medicine.getEntpriseName());
-            specialtyPublicTextView.setText(medicine.getSpecialtyPublic());
-            productTypeTextView.setText(medicine.getProductType());
+            //enterpriseTextView.setText(medicine.getEntpriseName());
+            //specialtyPublicTextView.setText(medicine.getSpecialtyPublic());
+            //productTypeTextView.setText(medicine.getProductType());
             itemIngredientNameTextView.setText(medicine.getItemIngredientName());
 
         }

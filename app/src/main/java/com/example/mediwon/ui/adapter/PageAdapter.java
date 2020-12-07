@@ -30,37 +30,27 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         Fragment fragment;
+
+        // MedicineDetailPageActivity에서 전달 받은 데이터를 Bundle에 넣어 Fragment의 인자로 전달
         Bundle bundle = new Bundle();
+        bundle.putString("name", intent.getExtras().getString("name"));
+        bundle.putString("engName", intent.getExtras().getString("engName"));
+        bundle.putString("image", intent.getExtras().getString("image"));
+        bundle.putString("itemSeq", intent.getExtras().getString("itemSeq"));
+        bundle.putString("enterprise", intent.getExtras().getString("enterprise"));
+        bundle.putString("classNo", intent.getExtras().getString("classNo"));
+        bundle.putString("className", intent.getExtras().getString("className"));
+        bundle.putString("etcOtcName", intent.getExtras().getString("etcOtcName"));
+        bundle.putString("ediCode", intent.getExtras().getString("ediCode"));
 
         switch (position) {
             case 0:
                 fragment = new MedicineInfoFragment();
-
-                // MedicineDetailPageActivity에서 전달 받은 데이터를 Bundle에 넣어 MedicineInfoFragment의 인자로 전달
-                bundle.putString("name", intent.getExtras().getString("name"));
-                bundle.putString("engName", intent.getExtras().getString("engName"));
-                bundle.putString("image", intent.getExtras().getString("image"));
-                bundle.putString("ediCode", intent.getExtras().getString("ediCode"));
-
                 fragment.setArguments(bundle);
                 return fragment;
             case 1:
                 fragment = new IdentificationInfoFragment();
-
-                // MedicineDetailPageActivity에서 전달 받은 데이터를 Bundle에 넣어 IdentificationInfoFragment의 인자로 전달
-                bundle.putString("name", intent.getExtras().getString("name"));
-                //Log.v("bundle", bundle.getString("name"));
-                bundle.putString("engName", intent.getExtras().getString("engName"));
-                bundle.putString("image", intent.getExtras().getString("image"));
-                bundle.putString("itemSeq", intent.getExtras().getString("itemSeq"));
-                bundle.putString("enterprise", intent.getExtras().getString("enterprise"));
-                bundle.putString("classNo", intent.getExtras().getString("classNo"));
-                bundle.putString("className", intent.getExtras().getString("className"));
-                bundle.putString("etcOtcName", intent.getExtras().getString("etcOtcName"));
-                bundle.putString("ediCode", intent.getExtras().getString("ediCode"));
-
                 fragment.setArguments(bundle);
-                //Log.v("detail", bundle.toString());
                 return fragment;
             case 2:
                 return new IngredientInfoFragment();
