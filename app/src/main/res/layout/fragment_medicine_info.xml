@@ -43,142 +43,147 @@
                 android:scaleType="fitXY" />
         </LinearLayout>
 
-        <TableLayout
-            android:stretchColumns="*"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="14dp"
-            android:layout_marginRight="14dp">
+            android:layout_height="match_parent">
 
-            <TableRow
+            <TableLayout
+                android:stretchColumns="*"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="6dp"
-                android:layout_weight = "1">
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight = "1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="주성분"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="6dp"/>
+
+                    <TextView
+                        android:id="@+id/itemIngredientName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="6"
+                        android:textSize="20dp"/>
+                </TableRow>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#CFCFCF"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="주성분"
-                    android:textStyle="bold"
-                    android:textSize="18dp"/>
+                    android:layout_weight = "1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="업체명"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="6dp"/>
+
+                    <TextView
+                        android:id="@+id/enterprise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="6"
+                        android:textSize="20dp"/>
+                </TableRow>
 
                 <TextView
-                    android:id="@+id/itemIngredientName"
-                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#CFCFCF"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_span="6"
-                    android:textSize="20dp"/>
-            </TableRow>
+                    android:layout_weight = "1">
 
-            <TextView
-                android:layout_height="1dp"
-                android:background="#CFCFCF"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="분류"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="6dp"/>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="6dp"
-                android:layout_weight = "1">
+                    <TextView
+                        android:id="@+id/productType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="6"
+                        android:textSize="20dp"/>
+                </TableRow>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#CFCFCF"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="업체명"
-                    android:textStyle="bold"
-                    android:textSize="18dp"/>
+                    android:layout_weight = "1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="구분"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="6dp"/>
+
+                    <TextView
+                        android:id="@+id/specialtyPublic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="6"
+                        android:textSize="20dp"/>
+                </TableRow>
 
                 <TextView
-                    android:id="@+id/enterprise"
-                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#CFCFCF"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_span="6"
-                    android:textSize="20dp"/>
-            </TableRow>
+                    android:layout_weight = "1">
 
-            <TextView
-                android:layout_height="1dp"
-                android:background="#CFCFCF"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="보험코드"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="6dp"/>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="6dp"
-                android:layout_weight = "1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="분류"
-                    android:textStyle="bold"
-                    android:textSize="18dp"/>
-
-                <TextView
-                    android:id="@+id/productType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_span="6"
-                    android:textSize="20dp"/>
-            </TableRow>
-
-            <TextView
-                android:layout_height="1dp"
-                android:background="#CFCFCF"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="6dp"
-                android:layout_weight = "1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="구분"
-                    android:textStyle="bold"
-                    android:textSize="18dp"/>
-
-                <TextView
-                    android:id="@+id/specialtyPublic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_span="6"
-                    android:textSize="20dp"/>
-            </TableRow>
-
-            <TextView
-                android:layout_height="1dp"
-                android:background="#CFCFCF"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="6dp"
-                android:layout_weight = "1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="보험코드"
-                    android:textStyle="bold"
-                    android:textSize="18dp" />
-
-                <TextView
-                    android:id="@+id/ediCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_span="6"
-                    android:textSize="20dp"/>
-            </TableRow>
-        </TableLayout>
+                    <TextView
+                        android:id="@+id/ediCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="6"
+                        android:textSize="20dp"/>
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
     </LinearLayout>
 
 </FrameLayout>

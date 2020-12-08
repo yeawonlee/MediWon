@@ -90,7 +90,6 @@ public class MedicineInfoFragment extends Fragment {
     }
 
     /*  AsyncTask    */
-    // AsyncTask<doInBackground, onProgressUpdate, onPostExecute의 매개변수 자료형>
     public class MedicineProductPermissionInfoService extends AsyncTask<String, Void, String> {
 
         @Override
@@ -98,7 +97,7 @@ public class MedicineInfoFragment extends Fragment {
 
             requestUrl = "http://apis.data.go.kr/1471057/MdcinPrductPrmisnInfoService/getMdcinPrductList?ServiceKey="
                     + key + "&item_name=" + medicineName;
-            Log.v("detail", "medicineName : " + medicineName);
+            //Log.v("detail", "medicineName : " + medicineName);
 
             try {
                 boolean isItemName = false;    // 품목명
@@ -174,7 +173,7 @@ public class MedicineInfoFragment extends Fragment {
                                 Log.v("detail", "분류명 : " + medicine.getProductType());
                             }
                             */
-                            if(isItemIngredientName) {
+                            if(isItemIngredientName && parser.getText() != null) {
                                 medicine.setItemIngredientName(parser.getText());
                                 isItemIngredientName = false;
                                 Log.v("detail", "주성분 : " + medicine.getItemIngredientName());
@@ -201,13 +200,17 @@ public class MedicineInfoFragment extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            //Log.v("detail", "onPostExecute : " + medicine.getItemName());
+            //Log.v("detail", "onPostExecute : " + s);
 
             //enterpriseTextView.setText(medicine.getEntpriseName());
             //specialtyPublicTextView.setText(medicine.getSpecialtyPublic());
             //productTypeTextView.setText(medicine.getProductType());
-            itemIngredientNameTextView.setText(medicine.getItemIngredientName());
 
+            try {
+                itemIngredientNameTextView.setText(medicine.getItemIngredientName());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

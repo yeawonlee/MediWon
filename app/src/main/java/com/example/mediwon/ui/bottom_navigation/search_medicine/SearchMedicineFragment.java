@@ -113,7 +113,7 @@ public class SearchMedicineFragment extends Fragment {
             // numOfRows : 한 페이지에 받아올 최대 개수
             // numOfRows에 따라 페이지의 개수(pageNo; 페이지 번호)가 달라짐
             requestUrl = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList?ServiceKey="
-                    + key + "&pageNo=1&numOfRows=80";
+                    + key + "&pageNo=1&numOfRows=100";
 
             try {
                 boolean isImage = false;    // 큰 제품 이미지

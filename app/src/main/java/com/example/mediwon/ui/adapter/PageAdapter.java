@@ -49,15 +49,19 @@ public class PageAdapter extends FragmentStatePagerAdapter {
                 fragment.setArguments(bundle);
                 return fragment;
             case 1:
-                fragment = new IdentificationInfoFragment();
+                fragment = new EffectInfoFragment();
                 fragment.setArguments(bundle);
                 return fragment;
             case 2:
-                return new IngredientInfoFragment();
+                fragment = new IdentificationInfoFragment();
+                fragment.setArguments(bundle);
+                return fragment;
             case 3:
-                return new EffectInfoFragment();
+                fragment = new IngredientInfoFragment();
+                return fragment;
             case 4:
-                return new SideEffectInfoFragment();
+                fragment = new SideEffectInfoFragment();
+                return fragment;
             default:
                 return null;
         }
