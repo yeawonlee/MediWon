@@ -8,14 +8,13 @@ public class Medicine {
     //String productType;         // 분류명
     String itemIngredientName;        // 주성분
     String materialName;              // 원료성분
-    String effectDocID;               // 효능효과
-    String usageDocID;                // 용법용량
-    String notaBeneDocID;             // 주의사항
     String storageMethod;             // 저장방법
-//    StringBuffer effectDocData;             // 효능효과 문서 데이터
-    String usageDocData;              // 용법용량 문서 데이터
-    String notaBeneDocData;           // 주의사항 문서 데이터
-    String precautionNoteDocData;     // 주의사항(전문) 문서 데이터
+/*
+    StringBuffer effectDocData;             // 효능효과 문서 데이터
+    StringBuffer usageDocData;              // 용법용량 문서 데이터
+    StringBuffer notaBeneDocData;           // 주의사항 문서 데이터
+    StringBuffer precautionNoteDocData;     // 주의사항(전문) 문서 데이터
+*/
     String mainItemIngredient;        // 유효성분
     String ingredientName;            // 첨가제
 
@@ -35,30 +34,6 @@ public class Medicine {
         this.materialName = materialName;
     }
 
-    public String getEffectDocID() {
-        return effectDocID;
-    }
-
-    public void setEffectDocID(String effectDocID) {
-        this.effectDocID = effectDocID;
-    }
-
-    public String getUsageDocID() {
-        return usageDocID;
-    }
-
-    public void setUsageDocID(String usageDocID) {
-        this.usageDocID = usageDocID;
-    }
-
-    public String getNotaBeneDocID() {
-        return notaBeneDocID;
-    }
-
-    public void setNotaBeneDocID(String notaBeneDocID) {
-        this.notaBeneDocID = notaBeneDocID;
-    }
-
     public String getStorageMethod() {
         return storageMethod;
     }
@@ -74,31 +49,31 @@ public class Medicine {
     public void setEffectDocData(StringBuffer effectDocData) {
         this.effectDocData = effectDocData;
     }
-*/
-    public String getUsageDocData() {
+
+    public StringBuffer getUsageDocData() {
         return usageDocData;
     }
 
-    public void setUsageDocData(String usageDocData) {
+    public void setUsageDocData(StringBuffer usageDocData) {
         this.usageDocData = usageDocData;
     }
 
-    public String getNotaBeneDocData() {
+    public StringBuffer getNotaBeneDocData() {
         return notaBeneDocData;
     }
 
-    public void setNotaBeneDocData(String notaBeneDocData) {
+    public void setNotaBeneDocData(StringBuffer notaBeneDocData) {
         this.notaBeneDocData = notaBeneDocData;
     }
 
-    public String getPrecautionNoteDocData() {
+    public StringBuffer getPrecautionNoteDocData() {
         return precautionNoteDocData;
     }
 
-    public void setPrecautionNoteDocData(String precautionNoteDocData) {
+    public void setPrecautionNoteDocData(StringBuffer precautionNoteDocData) {
         this.precautionNoteDocData = precautionNoteDocData;
     }
-
+*/
     public String getMainItemIngredient() {
         return mainItemIngredient;
     }
