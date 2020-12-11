@@ -12,7 +12,7 @@ public class Medicine {
     String usageDocID;                // 용법용량
     String notaBeneDocID;             // 주의사항
     String storageMethod;             // 저장방법
-    String effectDocData;             // 효능효과 문서 데이터
+//    StringBuffer effectDocData;             // 효능효과 문서 데이터
     String usageDocData;              // 용법용량 문서 데이터
     String notaBeneDocData;           // 주의사항 문서 데이터
     String precautionNoteDocData;     // 주의사항(전문) 문서 데이터
@@ -66,15 +66,15 @@ public class Medicine {
     public void setStorageMethod(String storageMethod) {
         this.storageMethod = storageMethod;
     }
-
-    public String getEffectDocData() {
+/*
+    public StringBuffer getEffectDocData() {
         return effectDocData;
     }
 
-    public void setEffectDocData(String effectDocData) {
+    public void setEffectDocData(StringBuffer effectDocData) {
         this.effectDocData = effectDocData;
     }
-
+*/
     public String getUsageDocData() {
         return usageDocData;
     }

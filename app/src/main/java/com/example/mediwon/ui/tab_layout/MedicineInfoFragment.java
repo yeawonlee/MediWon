@@ -100,10 +100,6 @@ public class MedicineInfoFragment extends Fragment {
             //Log.v("detail", "medicineName : " + medicineName);
 
             try {
-                boolean isItemName = false;    // 품목명
-                //boolean isEnterpriseName = false;   // 업체명
-                //boolean isSpecialtyPublic = false;   // 전문/일반 구분
-                //boolean isProductType = false;    // 분류명
                 boolean isItemIngredientName = false;  // 주성분
 
                 URL url = new URL(requestUrl); // 문자열로 된 request url을 URL 객체로 생성
@@ -131,48 +127,11 @@ public class MedicineInfoFragment extends Fragment {
                                 medicine = new Medicine();
                                 //Log.v("detail", "item tag start");
                             }
-                            /*
-                            if (tag.equals("ITEM_NAME")) {
-                                isItemName = true;
-                            }
-                            if (tag.equals("ENTP_NAME")) {
-                                isEnterpriseName = true;
-                            }
-                            if (tag.equals("SPCLTY_PBLC")) {
-                                isSpecialtyPublic = true;
-                            }
-                            if (tag.equals("PRDUCT_TYPE")) {
-                                isProductType = true;
-                            }
-                            */
                             if (tag.equals("ITEM_INGR_NAME")) {
                                 isItemIngredientName = true;
                             }
                             break;
                         case XmlPullParser.TEXT:    // 텍스트 내용 읽음
-                            /*
-                            if(isItemName) {
-                                medicine.setItemName(parser.getText());
-                                isItemName = false;
-                                Log.v("detail", "품목명 : " + medicine.getItemName());
-                            }
-
-                            else if(isEnterpriseName) {
-                                medicine.setEntpriseName(parser.getText());
-                                isEnterpriseName = false;
-                                Log.v("detail", "업체명 : " + medicine.getEntpriseName());
-                            }
-                            else if(isSpecialtyPublic) {
-                                medicine.setSpecialtyPublic(parser.getText());
-                                isSpecialtyPublic = false;
-                                Log.v("detail", "전문/일반 구분 : " + medicine.getSpecialtyPublic());
-                            }
-                            else if(isProductType){
-                                medicine.setProductType(parser.getText());
-                                isProductType = false;
-                                Log.v("detail", "분류명 : " + medicine.getProductType());
-                            }
-                            */
                             if(isItemIngredientName && parser.getText() != null) {
                                 medicine.setItemIngredientName(parser.getText());
                                 isItemIngredientName = false;
@@ -201,10 +160,6 @@ public class MedicineInfoFragment extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             //Log.v("detail", "onPostExecute : " + s);
-
-            //enterpriseTextView.setText(medicine.getEntpriseName());
-            //specialtyPublicTextView.setText(medicine.getSpecialtyPublic());
-            //productTypeTextView.setText(medicine.getProductType());
 
             try {
                 itemIngredientNameTextView.setText(medicine.getItemIngredientName());
