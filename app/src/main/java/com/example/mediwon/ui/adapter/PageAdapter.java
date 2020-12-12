@@ -2,7 +2,6 @@ package com.example.mediwon.ui.adapter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -12,7 +11,9 @@ import com.example.mediwon.ui.tab_layout.EffectInfoFragment;
 import com.example.mediwon.ui.tab_layout.IdentificationInfoFragment;
 import com.example.mediwon.ui.tab_layout.IngredientInfoFragment;
 import com.example.mediwon.ui.tab_layout.MedicineInfoFragment;
+import com.example.mediwon.ui.tab_layout.NotaBeneInfoFragment;
 import com.example.mediwon.ui.tab_layout.SideEffectInfoFragment;
+import com.example.mediwon.ui.tab_layout.UsageDirectionInfoFragment;
 
 public class PageAdapter extends FragmentStatePagerAdapter {
 
@@ -45,22 +46,32 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                fragment = new MedicineInfoFragment();
+                fragment = new MedicineInfoFragment();  // 약품 정보
                 fragment.setArguments(bundle);
                 return fragment;
             case 1:
-                fragment = new EffectInfoFragment();
+                fragment = new IdentificationInfoFragment();  // 식별 정보
                 fragment.setArguments(bundle);
                 return fragment;
             case 2:
-                fragment = new IdentificationInfoFragment();
+                fragment = new EffectInfoFragment();  // 효능 정보
                 fragment.setArguments(bundle);
                 return fragment;
             case 3:
-                fragment = new IngredientInfoFragment();
+                fragment = new UsageDirectionInfoFragment();     // 용법 정보
+                fragment.setArguments(bundle);
                 return fragment;
             case 4:
-                fragment = new SideEffectInfoFragment();
+                fragment = new IngredientInfoFragment();    // 성분 정보
+                fragment.setArguments(bundle);
+                return fragment;
+            case 5:
+                fragment = new SideEffectInfoFragment();  // 부작용 정보
+                fragment.setArguments(bundle);
+                return fragment;
+            case 6:
+                fragment = new NotaBeneInfoFragment();  // 주의사항 정보
+                fragment.setArguments(bundle);
                 return fragment;
             default:
                 return null;

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.tab_layout.EffectInfoFragment">
+    tools:context=".ui.tab_layout.UsageDirectionInfoFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,12 +59,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="효능·효과"
+                    android:text="용법·용량"
                     android:textSize="24dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/effectDocData"
+                    android:id="@+id/usageDirectionDocData"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="14dp"
@@ -73,4 +72,5 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+
 </FrameLayout>

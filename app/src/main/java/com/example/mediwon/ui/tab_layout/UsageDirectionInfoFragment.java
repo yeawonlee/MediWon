@@ -2,13 +2,14 @@ package com.example.mediwon.ui.tab_layout;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import androidx.fragment.app.Fragment;
 
 import com.example.mediwon.R;
 
@@ -19,14 +20,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class EffectInfoFragment extends Fragment {
+public class UsageDirectionInfoFragment extends Fragment {
 
     /*  의약품 낱알식별정보(DB) 서비스 데이터 연결 */
     private TextView nameTextView;      // 품목명
     private TextView engNameTextView;   // 제품영문명
 
     /*  의약품 제품 허가정보 서비스 데이터 연결 */
-    private TextView effectDocDataTextView;   // 효능효과
+    private TextView usageDirectionDocDataTextView;   // 용법용량
 
     private String medicineName;
 
@@ -37,11 +38,11 @@ public class EffectInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_effect_info, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_usage_direction_info, container, false);
 
         nameTextView = rootView.findViewById(R.id.medicineName);
         engNameTextView = rootView.findViewById(R.id.medicineEngName);
-        effectDocDataTextView = rootView.findViewById(R.id.effectDocData);
+        usageDirectionDocDataTextView = rootView.findViewById(R.id.usageDirectionDocData);
 
         /*  AsyncTask    */
         MedicineProductPermissionInfoService asyncTask = new MedicineProductPermissionInfoService();
@@ -61,7 +62,7 @@ public class EffectInfoFragment extends Fragment {
     /*  AsyncTask    */
     public class MedicineProductPermissionInfoService extends AsyncTask<String, Void, String> {
 
-        private StringBuffer effectDocData; // 효능효과 문서 데이터 담을 버퍼
+        private StringBuffer usageDirectionDocData; // 효능효과 문서 데이터 담을 버퍼
 
         @Override
         protected String doInBackground(String... strings) {
@@ -71,7 +72,7 @@ public class EffectInfoFragment extends Fragment {
 
             try {
                 // 효능효과
-                boolean isEE_DOC_DATA = false;    // EE_DOC_DATA 태그
+                boolean isUD_DOC_DATA = false;    // UD_DOC_DATA 태그
                 boolean isPARAGRAPH = false;  // PARAGRAPH 태그
 
                 URL url = new URL(requestUrl); // 문자열로 된 request url을 URL 객체로 생성
@@ -106,21 +107,21 @@ public class EffectInfoFragment extends Fragment {
                         case XmlPullParser.START_TAG:   // 태그 시작
                             //Log.v("detail", "START_TAG");
                             if (tag.equals("item")) {
-                                effectDocData = new StringBuffer();
+                                usageDirectionDocData = new StringBuffer();
                                 Log.v("detail", "item tag start");
                             }
-                            if (tag.equals("EE_DOC_DATA")) {    // 효능효과
-                                Log.v("detail", "효능효과");
-                                Log.v("detail", "EE_DOC_DATA");
-                                isEE_DOC_DATA = true;
-                            }
                             if (tag.equals("UD_DOC_DATA")) {    // 용법용량
-                                isEE_DOC_DATA = false;
+                                Log.v("detail", "용법용량");
+                                Log.v("detail", "UD_DOC_DATA");
+                                isUD_DOC_DATA = true;
+                            }
+                            if (tag.equals("EE_DOC_DATA")) {    // 효능효과
+                                isUD_DOC_DATA = false;
                             }
                             if (tag.equals("NB_DOC_DATA")) {    // 주의사항
-                                isEE_DOC_DATA = false;
+                                isUD_DOC_DATA = false;
                             }
-                            if (tag.equals("DOC") && isEE_DOC_DATA) {
+                            if (tag.equals("DOC") && isUD_DOC_DATA) {
                                 Log.v("detail", "DOC");
                                 try {
                                     docTitleAttribute = parser.getAttributeValue(null, "title");
@@ -131,7 +132,7 @@ public class EffectInfoFragment extends Fragment {
                                     e.printStackTrace();
                                 }
                             }
-                            if (tag.equals("SECTION") && isEE_DOC_DATA) {
+                            if (tag.equals("SECTION") && isUD_DOC_DATA) {
                                 Log.v("detail", "SECTION");
                                 try {
                                     sectionTitleAttribute = parser.getAttributeValue(null, "title");
@@ -140,14 +141,14 @@ public class EffectInfoFragment extends Fragment {
                                     e.printStackTrace();
                                 }
                             }
-                            if (tag.equals("ARTICLE") && isEE_DOC_DATA) {
+                            if (tag.equals("ARTICLE") && isUD_DOC_DATA) {
                                 Log.v("detail", "ARTICLE");
                                 try {
                                     articleTitleAttribute = parser.getAttributeValue(null, "title");
                                     Log.v("detail", "article title = " + articleTitleAttribute);
                                     if(!articleTitleAttribute.equals("")) {
-                                        effectDocData.append(articleTitleAttribute);
-                                        effectDocData.append("\n\n");
+                                        usageDirectionDocData.append(articleTitleAttribute);
+                                        usageDirectionDocData.append("\n\n");
                                         Log.v("detail", "article title = null 아님!");
                                     }
                                 } catch (Exception e) {
@@ -155,7 +156,7 @@ public class EffectInfoFragment extends Fragment {
                                 }
                             }
                             try {
-                                if (tag.equals("PARAGRAPH") && isEE_DOC_DATA) {
+                                if (tag.equals("PARAGRAPH") && isUD_DOC_DATA) {
                                     Log.v("detail", "PARAGRAPH");
                                     isPARAGRAPH = true;
                                 }
@@ -166,8 +167,8 @@ public class EffectInfoFragment extends Fragment {
 
                         case XmlPullParser.TEXT:    // 태그 사이 텍스트
                             if (isPARAGRAPH && parser.getText() != null) {
-                                effectDocData.append(parser.getText());
-                                effectDocData.append("\n\n");
+                                usageDirectionDocData.append(parser.getText());
+                                usageDirectionDocData.append("\n\n");
                                 isPARAGRAPH = false;
                                 //Log.v("detail", "PARAGRAPH) " + effectDoc);
                             }
@@ -177,8 +178,8 @@ public class EffectInfoFragment extends Fragment {
                             if (tag.equals("PARAGRAPH")) {
                                 isPARAGRAPH = false;
                             }
-                            if (tag.equals("EE_DOC_DATA")) {
-                                isEE_DOC_DATA = false;
+                            if (tag.equals("UD_DOC_DATA")) {
+                                isUD_DOC_DATA = false;
                             }
                             break;
 
@@ -199,8 +200,8 @@ public class EffectInfoFragment extends Fragment {
             super.onPostExecute(s);
 
             try {
-                effectDocDataTextView.setText(effectDocData);
-                Log.v("detail", "effectDocData : " + effectDocDataTextView.getText());
+                usageDirectionDocDataTextView.setText(usageDirectionDocData);
+                Log.v("detail", "usageDocData : " + usageDirectionDocDataTextView.getText());
             } catch (Exception e) {
                 e.printStackTrace();
             }

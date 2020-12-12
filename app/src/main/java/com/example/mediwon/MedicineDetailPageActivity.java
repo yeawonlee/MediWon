@@ -2,18 +2,14 @@ package com.example.mediwon;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.mediwon.ui.adapter.PageAdapter;
-import com.example.mediwon.ui.tab_layout.MedicineInfoFragment;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -23,7 +19,7 @@ public class MedicineDetailPageActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private PageAdapter pageAdapter;
-    private TabItem tabMedicineInfo, tabIdentificationInfo, tabIngredientInfo, tabEffectInfo, tabSideEffectInfo;
+    private TabItem tabMedicineInfo, tabIdentificationInfo, tabEffectInfo, tabUsageDirectionInfo, tabIngredientInfo, tabSideEffectInfo, tabNotaBeneInfo;
 
     private Intent intent;
 
@@ -42,11 +38,13 @@ public class MedicineDetailPageActivity extends AppCompatActivity {
 
         /*  TabLayout, TabItem */
         tabLayout = findViewById(R.id.tabLayout);
-        tabMedicineInfo = findViewById(R.id.tab_medicineInfo);
-        tabIdentificationInfo = findViewById(R.id.tab_identificationInfo);
-        tabIngredientInfo = findViewById(R.id.tab_ingredientInfo);
-        tabEffectInfo = findViewById(R.id.tab_effectInfo);
-        tabSideEffectInfo = findViewById(R.id.tab_sideEffectInfo);
+        tabMedicineInfo = findViewById(R.id.tab_medicineInfo);                  // 약품 정보
+        tabIdentificationInfo = findViewById(R.id.tab_identificationInfo);      // 식별 정보
+        tabEffectInfo = findViewById(R.id.tab_effectInfo);                      // 효능효과 정보
+        tabUsageDirectionInfo = findViewById(R.id.tab_usageDirectionInfo);      // 용법 정보
+        tabIngredientInfo = findViewById(R.id.tab_ingredientInfo);              // 성분 정보
+        tabSideEffectInfo = findViewById(R.id.tab_sideEffectInfo);              // 부작용 정보
+        tabNotaBeneInfo = findViewById(R.id.tab_notaBeneInfo);                  // 주의사항 정보
 
         viewPager = findViewById(R.id.viewPager);
         pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount(), intent);    // intent 넘겨줌
@@ -73,57 +71,7 @@ public class MedicineDetailPageActivity extends AppCompatActivity {
             }
         });
 
-/*
-        /*  adapter에서 인텐트로 넘겨준 인자 값들을 MedicineInfoFragment에 전달  * /
-        intent = getIntent();
-        //newInstance(intent);
-
-        Fragment fragment = new MedicineInfoFragment();
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.viewPager, fragment);
-        //transaction.replace(R.id.fragment_layout, fragment);
-        transaction.commit();
-
-        Bundle bundle = new Bundle();
-        bundle.putString("name", intent.getExtras().getString("name"));
-        //Log.v("bundle", bundle.getString("name"));
-        bundle.putString("engName", intent.getExtras().getString("engName"));
-        bundle.putString("image", intent.getExtras().getString("image"));
-        bundle.putString("itemSeq", intent.getExtras().getString("itemSeq"));
-        bundle.putString("enterprise", intent.getExtras().getString("enterprise"));
-        bundle.putString("classNo", intent.getExtras().getString("classNo"));
-        bundle.putString("className", intent.getExtras().getString("className"));
-        bundle.putString("etcOtcName", intent.getExtras().getString("etcOtcName"));
-        bundle.putString("ediCode", intent.getExtras().getString("ediCode"));
-
-        fragment.setArguments(bundle);  // 문제 X
-        Log.v("detail", bundle.toString());
-*/
     }
-
-/*
-    public static MedicineInfoFragment newInstance(Intent intent) {
-
-        MedicineInfoFragment fragment = new MedicineInfoFragment();
-        Bundle bundle = new Bundle();
-
-        bundle.putString("name", intent.getExtras().getString("name"));
-        //Log.v("bundle", bundle.getString("name"));
-        bundle.putString("engName", intent.getExtras().getString("engName"));
-        bundle.putString("image", intent.getExtras().getString("image"));
-        bundle.putString("itemSeq", intent.getExtras().getString("itemSeq"));
-        bundle.putString("enterprise", intent.getExtras().getString("enterprise"));
-        bundle.putString("classNo", intent.getExtras().getString("classNo"));
-        bundle.putString("className", intent.getExtras().getString("className"));
-        bundle.putString("etcOtcName", intent.getExtras().getString("etcOtcName"));
-        bundle.putString("ediCode", intent.getExtras().getString("ediCode"));
-
-        fragment.setArguments(bundle);
-
-        return fragment;
-    }
-*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
