@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.StringTokenizer;
 
 public class NotaBeneInfoFragment extends Fragment {
 
@@ -40,7 +42,7 @@ public class NotaBeneInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup)  inflater.inflate(R.layout.fragment_nota_bene_info, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_nota_bene_info, container, false);
 
         nameTextView = rootView.findViewById(R.id.medicineName);
         engNameTextView = rootView.findViewById(R.id.medicineEngName);
@@ -65,6 +67,7 @@ public class NotaBeneInfoFragment extends Fragment {
     public class MedicineProductPermissionInfoService extends AsyncTask<String, Void, String> {
 
         private StringBuffer notaBeneDocData; // 주의사항 문서 데이터 담을 버퍼
+        private StringBuffer CDATA;
 
         @Override
         protected String doInBackground(String... strings) {
@@ -73,7 +76,7 @@ public class NotaBeneInfoFragment extends Fragment {
                     + key + "&item_name=" + medicineName;
 
             try {
-                // 효능효과
+
                 boolean isNB_DOC_DATA = false;    // NB_DOC_DATA 태그
                 boolean isPARAGRAPH = false;  // PARAGRAPH 태그
 
@@ -148,7 +151,7 @@ public class NotaBeneInfoFragment extends Fragment {
                                 try {
                                     articleTitleAttribute = parser.getAttributeValue(null, "title");
                                     Log.v("detail", "article title = " + articleTitleAttribute);
-                                    if(!articleTitleAttribute.equals("")) {
+                                    if (!articleTitleAttribute.equals("")) {
                                         notaBeneDocData.append(articleTitleAttribute);
                                         notaBeneDocData.append("\n\n");
                                         Log.v("detail", "article title = null 아님!");
@@ -160,6 +163,7 @@ public class NotaBeneInfoFragment extends Fragment {
                             try {
                                 if (tag.equals("PARAGRAPH") && isNB_DOC_DATA) {
                                     Log.v("detail", "PARAGRAPH");
+                                    CDATA = new StringBuffer();
                                     isPARAGRAPH = true;
                                 }
                             } catch (Exception e) {
@@ -169,16 +173,55 @@ public class NotaBeneInfoFragment extends Fragment {
 
                         case XmlPullParser.TEXT:    // 태그 사이 텍스트
                             if (isPARAGRAPH && parser.getText() != null) {
+                                notaBeneDocData.append("<p>");
                                 notaBeneDocData.append(parser.getText());
+                                notaBeneDocData.append("</p>");
+                                /*
+                                StringBuffer parseCDATA = new StringBuffer();
+                                parseCDATA.append(parser.getText());
+                                //CDATA.append(parseCDATA.substring(parseCDATA.indexOf("<") - 1));
+                                Log.v("detail", "PARAGRAPH !! " + CDATA);
+                                CDATA.append(parseCDATA.substring(parseCDATA.indexOf("<p>")));
+                                Log.v("detail", "html tag start : " + CDATA);
+                                CDATA.append(parseCDATA.substring(parseCDATA.indexOf("</p>")));
+                                Log.v("detail", "html tag end : " + CDATA);
+                                notaBeneDocData.append(CDATA);
                                 notaBeneDocData.append("\n\n");
+                                */
+
+                                /*
+                                StringBuffer parseCDATA = new StringBuffer();
+                                parseCDATA.append(parser.getText());
+                                StringTokenizer tokenizer = new StringTokenizer(parseCDATA.toString(), "<tbody>");
+
+                                if(tokenizer != null) {
+                                    notaBeneDocData.append("<p>");
+                                    notaBeneDocData.append(parser.getText());
+                                    notaBeneDocData.append("</p>");
+                                } else {
+                                    while (tokenizer.hasMoreTokens()) {
+                                        notaBeneDocData.append("<table>");
+                                        notaBeneDocData.append(parser.getText());
+                                        notaBeneDocData.append("</table>");
+                                    }
+                                }
+                               */
                                 isPARAGRAPH = false;
-                                //Log.v("detail", "PARAGRAPH) " + effectDoc);
+                                Log.v("detail", "PARAGRAPH) " + notaBeneDocData);
+
                             }
                             break;
 
                         case XmlPullParser.END_TAG: // 태그 끝
                             if (tag.equals("PARAGRAPH")) {
                                 isPARAGRAPH = false;
+                                //여기서 작업?
+                                /*
+                                StringBuffer CDATA_ = new StringBuffer();
+                                CDATA_.append(CDATA.substring(CDATA.indexOf("/>") + 2));
+                                notaBeneDocData.append(CDATA_);
+                                notaBeneDocData.append("\n\n");
+                                */
                             }
                             if (tag.equals("NB_DOC_DATA")) {
                                 isNB_DOC_DATA = false;
@@ -202,8 +245,8 @@ public class NotaBeneInfoFragment extends Fragment {
             super.onPostExecute(s);
 
             try {
-                notaBeneDocDataTextView.setText(notaBeneDocData);
-                Log.v("detail", "notaBeneDocData : " + notaBeneDocDataTextView.getText());
+                notaBeneDocDataTextView.setText(Html.fromHtml(String.valueOf(notaBeneDocData)));
+                //Log.v("detail", "notaBeneDocData : " + notaBeneDocDataTextView.getText());
             } catch (Exception e) {
                 e.printStackTrace();
             }

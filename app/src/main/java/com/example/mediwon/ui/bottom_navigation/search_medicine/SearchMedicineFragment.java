@@ -206,7 +206,7 @@ public class SearchMedicineFragment extends Fragment {
                             else if(isName) {
                                 medicine.setName(parser.getText());
                                 isName = false;
-                                Log.v("data", "제품명 : " + parser.getText());
+                                //Log.v("data", "제품명 : " + parser.getText());
                             }
                             else if(isEnterprise) {
                                 medicine.setEnterprise(parser.getText());

@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +72,7 @@ public class UsageDirectionInfoFragment extends Fragment {
                     + key + "&item_name=" + medicineName;
 
             try {
-                // 효능효과
+
                 boolean isUD_DOC_DATA = false;    // UD_DOC_DATA 태그
                 boolean isPARAGRAPH = false;  // PARAGRAPH 태그
 
@@ -167,10 +168,11 @@ public class UsageDirectionInfoFragment extends Fragment {
 
                         case XmlPullParser.TEXT:    // 태그 사이 텍스트
                             if (isPARAGRAPH && parser.getText() != null) {
+                                usageDirectionDocData.append("<p>");
                                 usageDirectionDocData.append(parser.getText());
-                                usageDirectionDocData.append("\n\n");
+                                usageDirectionDocData.append("</p>");
                                 isPARAGRAPH = false;
-                                //Log.v("detail", "PARAGRAPH) " + effectDoc);
+                                //Log.v("detail", "PARAGRAPH) " + usageDirectionDocData);
                             }
                             break;
 
@@ -200,7 +202,7 @@ public class UsageDirectionInfoFragment extends Fragment {
             super.onPostExecute(s);
 
             try {
-                usageDirectionDocDataTextView.setText(usageDirectionDocData);
+                usageDirectionDocDataTextView.setText(Html.fromHtml(String.valueOf(usageDirectionDocData)));
                 Log.v("detail", "usageDocData : " + usageDirectionDocDataTextView.getText());
             } catch (Exception e) {
                 e.printStackTrace();

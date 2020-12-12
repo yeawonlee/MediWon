@@ -2,6 +2,7 @@ package com.example.mediwon.ui.tab_layout;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -166,8 +167,9 @@ public class EffectInfoFragment extends Fragment {
 
                         case XmlPullParser.TEXT:    // 태그 사이 텍스트
                             if (isPARAGRAPH && parser.getText() != null) {
+                                effectDocData.append("<p>");
                                 effectDocData.append(parser.getText());
-                                effectDocData.append("\n\n");
+                                effectDocData.append("</p>");
                                 isPARAGRAPH = false;
                                 //Log.v("detail", "PARAGRAPH) " + effectDoc);
                             }
@@ -199,7 +201,7 @@ public class EffectInfoFragment extends Fragment {
             super.onPostExecute(s);
 
             try {
-                effectDocDataTextView.setText(effectDocData);
+                effectDocDataTextView.setText(Html.fromHtml(String.valueOf(effectDocData)));
                 Log.v("detail", "effectDocData : " + effectDocDataTextView.getText());
             } catch (Exception e) {
                 e.printStackTrace();
