@@ -119,7 +119,6 @@ public class SearchMedicineFragment extends Fragment {
                 boolean isImage = false;    // 큰 제품 이미지
                 boolean isName = false; // 품목명
                 boolean isEnterprise = false;   // 업체명
-                boolean isItemSeq = false;  // 품목 일련번호
                 boolean isClassNo = false;  // 분류번호
                 boolean isClassName = false;    // 분류명
                 boolean isEtcOtcName = false;   // 구분 (전문/일반)
@@ -168,8 +167,6 @@ public class SearchMedicineFragment extends Fragment {
                                 medicine = new MedicineIdentification();
                             }
 
-                            if (tag.equals("ITEM_SEQ"))
-                                isItemSeq = true;
                             if (tag.equals("ITEM_NAME"))
                                 isName = true;
                             if (tag.equals("ENTP_NAME"))
@@ -199,11 +196,7 @@ public class SearchMedicineFragment extends Fragment {
                             }
                             break;
                         case XmlPullParser.TEXT:    // 텍스트 내용 읽음
-                            if(isItemSeq) {
-                                medicine.setItemSeq(parser.getText());
-                                isItemSeq = false;
-                            }
-                            else if(isName) {
+                            if(isName) {
                                 medicine.setName(parser.getText());
                                 isName = false;
                                 //Log.v("data", "제품명 : " + parser.getText());

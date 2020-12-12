@@ -84,7 +84,6 @@ public class SearchMedicineAdapter extends RecyclerView.Adapter<SearchMedicineAd
                 intent.putExtra("name", dataSet.get(position).getName());
                 intent.putExtra("engName", dataSet.get(position).getEngName());
                 intent.putExtra("image", dataSet.get(position).getImageUrl());
-                intent.putExtra("itemSeq", dataSet.get(position).getItemSeq());
                 intent.putExtra("enterprise", dataSet.get(position).getEnterprise());
                 intent.putExtra("classNo", dataSet.get(position).getClassNo());
                 intent.putExtra("className", dataSet.get(position).getClassName());

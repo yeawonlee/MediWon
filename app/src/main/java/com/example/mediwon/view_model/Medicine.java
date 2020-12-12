@@ -2,10 +2,6 @@ package com.example.mediwon.view_model;
 
 public class Medicine {
 
-    //String itemName;            // 품목명
-    //String entpriseName;        // 업체명
-    //String specialtyPublic;     // 전문/일반 구분
-    //String productType;         // 분류명
     String itemIngredientName;        // 주성분
     String materialName;              // 원료성분
     String storageMethod;             // 저장방법
