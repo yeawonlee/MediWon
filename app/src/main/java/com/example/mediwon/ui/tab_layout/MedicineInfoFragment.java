@@ -83,9 +83,15 @@ public class MedicineInfoFragment extends Fragment {
             specialtyPublicTextView.setText(getArguments().getString("etcOtcName"));
             ediCodeTextView.setText(getArguments().getString("ediCode"));
         }
-/*
 
-*/
+        /*
+        // SideEffectFragment로 주성분 넘겨주기 위해
+        Fragment fragment = getTargetFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("ingredients", itemIngredientNameTextView.getText().toString());
+        fragment.setArguments(bundle);
+        */
+
         return rootView;
     }
 

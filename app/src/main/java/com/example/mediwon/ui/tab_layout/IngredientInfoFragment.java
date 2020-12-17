@@ -44,7 +44,7 @@ public class IngredientInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        ViewGroup rootView = (ViewGroup)  inflater.inflate(R.layout.fragment_ingredient_info, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_ingredient_info, container, false);
 
         nameTextView = rootView.findViewById(R.id.medicineName);
         engNameTextView = rootView.findViewById(R.id.medicineEngName);
@@ -150,7 +150,7 @@ public class IngredientInfoFragment extends Fragment {
                                     index++;
                                 }
 
-                                for (int i = 1; i <= ingredientList.length; i++) {
+                                for (int i = 1; i < ingredientList.length; i++) {
                                     //Log.v("ingredient", "ingredientList\n" + ingredient);
                                     StringTokenizer tokenizer2 = new StringTokenizer(ingredientList[i], "|;");
 
