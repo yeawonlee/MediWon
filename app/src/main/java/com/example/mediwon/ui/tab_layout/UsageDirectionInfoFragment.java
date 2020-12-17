@@ -27,7 +27,7 @@ public class UsageDirectionInfoFragment extends Fragment {
     private TextView nameTextView;      // 품목명
     private TextView engNameTextView;   // 제품영문명
 
-    /*  의약품 제품 허가정보 서비스 데이터 연결 */
+    /*  의약품 제품 허가정보 서비스  - 제품 허가 상세정보조회 데이터 연결 */
     private TextView usageDirectionDocDataTextView;   // 용법용량
 
     private String medicineName;
@@ -63,7 +63,7 @@ public class UsageDirectionInfoFragment extends Fragment {
     /*  AsyncTask    */
     public class MedicineProductPermissionInfoService extends AsyncTask<String, Void, String> {
 
-        private StringBuffer usageDirectionDocData; // 효능효과 문서 데이터 담을 버퍼
+        private StringBuffer usageDirectionDocData; // 용법용량 문서 데이터 담을 버퍼
 
         @Override
         protected String doInBackground(String... strings) {

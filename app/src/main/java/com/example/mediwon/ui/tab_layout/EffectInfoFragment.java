@@ -26,7 +26,7 @@ public class EffectInfoFragment extends Fragment {
     private TextView nameTextView;      // 품목명
     private TextView engNameTextView;   // 제품영문명
 
-    /*  의약품 제품 허가정보 서비스 데이터 연결 */
+    /*  의약품 제품 허가정보 서비스 - 제품 허가 상세정보조회 데이터 연결 */
     private TextView effectDocDataTextView;   // 효능효과
 
     private String medicineName;

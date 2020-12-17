@@ -35,6 +35,7 @@ public class MedicineDetailPageActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.detailAppBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼
+        toolbar.setTitle(intent.getExtras().getString("name"));
 
         /*  TabLayout, TabItem */
         tabLayout = findViewById(R.id.tabLayout);

@@ -34,7 +34,7 @@ public class MedicineInfoFragment extends Fragment {
     private TextView engNameTextView;            // 제품영문명
     private TextView ediCodeTextView;            // 보험코드
 
-    /*  의약품 제품 허가정보 서비스 데이터 연결 */
+    /*  의약품 제품 허가정보 서비스 - 제품 허가 목록조회 데이터 연결 */
     private TextView itemIngredientNameTextView;   // 주성분
 
     private Medicine medicine;
