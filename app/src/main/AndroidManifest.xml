@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mediwon">
 
-    <uses-permission android:name="android.permission.INTERNET" />  <!-- 인터넷 사용 권한 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />  <!-- 네트워크 연결 확인 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 인터넷 사용 권한 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MedicineDetailPageActivity"></activity>
+        <activity android:name=".ui.bottom_navigation.bookmark.IngredientBookmarkActivity"></activity>
+        <activity android:name=".ui.bottom_navigation.bookmark.MedicineBookmarkActivity" />
+        <activity android:name=".ui.bottom_navigation.search_medicine.MedicineDetailPageActivity" />
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan"> <!-- 키보드 입력 시 Bottom Navigation이 따라 올라오는 것 방지 -->
@@ -23,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IngredientDetailPageActivity"></activity>
+        <activity android:name=".ui.bottom_navigation.search_ingredients.IngredientDetailPageActivity" />
     </application>
 
 </manifest>

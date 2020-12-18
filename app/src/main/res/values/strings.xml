@@ -33,8 +33,11 @@
     <string name="detail_page_tab3">효능 정보</string>
     <string name="detail_page_tab4">용법 정보</string>
     <string name="detail_page_tab5">성분 정보</string>
-    <string name="detail_page_tab6">부작용 정보</string>
-    <string name="detail_page_tab7">주의사항 정보</string>
+    <string name="detail_page_tab6">주의사항 정보</string>
+    <string name="detail_page_bookmark">상세 정보 페이지</string>
+
+    <!-- 즐겨찾기 페이지 -->
+    <string name="bookmark_page">즐겨찾기 페이지</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

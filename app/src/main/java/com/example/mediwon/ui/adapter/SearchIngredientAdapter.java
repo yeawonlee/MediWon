@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mediwon.IngredientDetailPageActivity;
+import com.example.mediwon.ui.bottom_navigation.search_ingredients.IngredientDetailPageActivity;
 import com.example.mediwon.R;
 import com.example.mediwon.view_model.Ingredient;
 

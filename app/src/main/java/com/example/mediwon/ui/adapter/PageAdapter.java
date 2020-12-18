@@ -12,7 +12,6 @@ import com.example.mediwon.ui.tab_layout.IdentificationInfoFragment;
 import com.example.mediwon.ui.tab_layout.IngredientInfoFragment;
 import com.example.mediwon.ui.tab_layout.MedicineInfoFragment;
 import com.example.mediwon.ui.tab_layout.NotaBeneInfoFragment;
-import com.example.mediwon.ui.tab_layout.SideEffectInfoFragment;
 import com.example.mediwon.ui.tab_layout.UsageDirectionInfoFragment;
 
 public class PageAdapter extends FragmentStatePagerAdapter {
@@ -66,10 +65,6 @@ public class PageAdapter extends FragmentStatePagerAdapter {
                 fragment.setArguments(bundle);
                 return fragment;
             case 5:
-                fragment = new SideEffectInfoFragment();  // 부작용 정보
-                fragment.setArguments(bundle);
-                return fragment;
-            case 6:
                 fragment = new NotaBeneInfoFragment();  // 주의사항 정보
                 fragment.setArguments(bundle);
                 return fragment;

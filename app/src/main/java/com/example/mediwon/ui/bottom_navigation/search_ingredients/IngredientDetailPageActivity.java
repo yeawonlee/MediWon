@@ -1,4 +1,4 @@
-package com.example.mediwon;
+package com.example.mediwon.ui.bottom_navigation.search_ingredients;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.mediwon.R;
 
 public class IngredientDetailPageActivity extends AppCompatActivity {
 

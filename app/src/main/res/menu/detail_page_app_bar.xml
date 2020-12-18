@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/search"
-        android:icon="@drawable/ic_star_border_black_24dp"
-        android:title="@string/detail_page"
+        android:id="@+id/bookmark"
+        android:icon="@drawable/bookmark_selector"
+        android:title="@string/detail_page_bookmark"
         app:showAsAction="always"/>
 
 </menu>

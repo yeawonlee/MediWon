@@ -1,14 +1,18 @@
-package com.example.mediwon;
+package com.example.mediwon.ui.bottom_navigation.search_medicine;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.mediwon.R;
 import com.example.mediwon.ui.adapter.PageAdapter;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -19,7 +23,7 @@ public class MedicineDetailPageActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private PageAdapter pageAdapter;
-    private TabItem tabMedicineInfo, tabIdentificationInfo, tabEffectInfo, tabUsageDirectionInfo, tabIngredientInfo, tabSideEffectInfo, tabNotaBeneInfo;
+    private TabItem tabMedicineInfo, tabIdentificationInfo, tabEffectInfo, tabUsageDirectionInfo, tabIngredientInfo, tabNotaBeneInfo;
 
     private Intent intent;
 
@@ -44,7 +48,6 @@ public class MedicineDetailPageActivity extends AppCompatActivity {
         tabEffectInfo = findViewById(R.id.tab_effectInfo);                      // 효능효과 정보
         tabUsageDirectionInfo = findViewById(R.id.tab_usageDirectionInfo);      // 용법 정보
         tabIngredientInfo = findViewById(R.id.tab_ingredientInfo);              // 성분 정보
-        tabSideEffectInfo = findViewById(R.id.tab_sideEffectInfo);              // 부작용 정보
         tabNotaBeneInfo = findViewById(R.id.tab_notaBeneInfo);                  // 주의사항 정보
 
         viewPager = findViewById(R.id.viewPager);
@@ -84,11 +87,24 @@ public class MedicineDetailPageActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case android.R.id.home:{ // app bar의 back 키 눌렀을 때 동작
+            case android.R.id.home: // app bar의 back 키 눌렀을 때 동작
                 finish();
                 return true;
-            }
+            case R.id.bookmark:
+                //invalidateOptionsMenu();
+                //item.setChecked(true);
+                Toast.makeText(this, "즐겨찾기에 추가되었습니다", Toast.LENGTH_SHORT).show();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    /*
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.bookmark).setChecked(true);
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+    */
 }

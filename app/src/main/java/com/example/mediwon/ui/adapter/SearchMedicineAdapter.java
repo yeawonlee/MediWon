@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.mediwon.MedicineDetailPageActivity;
+import com.example.mediwon.ui.bottom_navigation.search_medicine.MedicineDetailPageActivity;
 import com.example.mediwon.R;
 import com.example.mediwon.view_model.MedicineIdentification;
 
