@@ -18,15 +18,9 @@
         tools:layout="@layout/fragment_search_ingredients" />
 
     <fragment
-        android:id="@+id/navigationBookmark"
-        android:name="com.example.mediwon.ui.bottom_navigation.bookmark.BookmarkFragment"
+        android:id="@+id/navigationSearchSideEffect"
+        android:name="com.example.mediwon.ui.bottom_navigation.search_side_effect.SearchSideEffectFragment"
         android:label="@string/bottom_nav_3"
-        tools:layout="@layout/fragment_bookmark" />
-
-    <fragment
-        android:id="@+id/navigationSetting"
-        android:name="com.example.mediwon.ui.bottom_navigation.setting.SettingFragment"
-        android:label="@string/bottom_nav_4"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_search_side_effect" />
 
 </navigation>

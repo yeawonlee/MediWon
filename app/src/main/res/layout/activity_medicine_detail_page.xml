@@ -18,7 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/white"
-            app:menu="@menu/detail_page_app_bar"
             app:title="@string/detail_page" />
     </com.google.android.material.appbar.AppBarLayout>
 

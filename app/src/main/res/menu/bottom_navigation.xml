@@ -14,15 +14,9 @@
         android:title="@string/bottom_nav_2"/>
 
     <item
-        android:id="@+id/navigationBookmark"
+        android:id="@+id/navigationSearchSideEffect"
         android:enabled="true"
-        android:icon="@drawable/ic_star_black_24dp"
+        android:icon="@drawable/ic_warning_black_24dp"
         android:title="@string/bottom_nav_3"/>
-
-    <item
-        android:id="@+id/navigationSetting"
-        android:enabled="true"
-        android:icon="@drawable/ic_settings_black_24dp"
-        android:title="@string/bottom_nav_4"/>
 
 </menu>

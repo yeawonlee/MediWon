@@ -80,7 +80,6 @@ public class MedicineDetailPageActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.detail_page_app_bar, menu);
         return true;
     }
 
@@ -89,11 +88,6 @@ public class MedicineDetailPageActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case android.R.id.home: // app bar의 back 키 눌렀을 때 동작
                 finish();
-                return true;
-            case R.id.bookmark:
-                //invalidateOptionsMenu();
-                //item.setChecked(true);
-                Toast.makeText(this, "즐겨찾기에 추가되었습니다", Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);

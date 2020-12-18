@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.bottom_navigation.search_medicine.SearchMedicineFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -12,8 +11,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tabLayout" />
-    <!-- android:nestedScrollingEnabled="false" -->
-    <!-- android:layout_above="@+id/bottomNavigationView" -->
-    <!-- Bottom Navigation에 RecyclerView가 가려지는 문제 -->
 
 </FrameLayout>

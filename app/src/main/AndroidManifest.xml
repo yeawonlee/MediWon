@@ -13,8 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.bottom_navigation.bookmark.IngredientBookmarkActivity"></activity>
-        <activity android:name=".ui.bottom_navigation.bookmark.MedicineBookmarkActivity" />
+        <activity android:name=".ui.bottom_navigation.search_side_effect.SideEffectDetailPageActivity"></activity>
         <activity android:name=".ui.bottom_navigation.search_medicine.MedicineDetailPageActivity" />
         <activity
             android:name=".MainActivity"

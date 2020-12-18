@@ -62,7 +62,6 @@ public class IngredientDetailPageActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.detail_page_app_bar, menu);
         return true;
     }
 
