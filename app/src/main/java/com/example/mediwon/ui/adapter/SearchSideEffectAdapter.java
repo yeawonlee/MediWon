@@ -62,7 +62,7 @@ public class SearchSideEffectAdapter extends RecyclerView.Adapter<SearchSideEffe
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // Bind data
-        holder.medicineNameTextView.setText(dataSet.get(position).getName());
+        holder.medicineNameTextView.setText(dataSet.get(position).getName() + " (" + dataSet.get(position).getName_eng() + ")");
 
         // 아이템 클릭 시 이벤트 처리
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +108,9 @@ public class SearchSideEffectAdapter extends RecyclerView.Adapter<SearchSideEffe
 
                 for(SideEffect data : dataSetAll) {
                     if(data.getName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(data);
+                    }
+                    if(data.getName_eng().toLowerCase().contains(filterPattern)) {
                         filteredList.add(data);
                     }
                 }

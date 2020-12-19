@@ -110,7 +110,7 @@ public class SearchIngredientsFragment extends Fragment {
             // numOfRows : 한 페이지에 받아올 최대 개수
             // numOfRows에 따라 페이지의 개수(pageNo; 페이지 번호)가 달라짐
             requestUrl = "http://apis.data.go.kr/B551182/msupCmpnMeftInfoService/getMajorCmpnNmCdList?ServiceKey="
-                    + key + "&numOfRows=200&pageNo=1&meftDivNo=1";
+                    + key + "&numOfRows=700&meftDivNo=1";
 
             try {
                 boolean isDivNm = false;    // 분류명
