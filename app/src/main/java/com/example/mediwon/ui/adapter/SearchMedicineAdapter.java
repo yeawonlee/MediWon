@@ -119,6 +119,12 @@ public class SearchMedicineAdapter extends RecyclerView.Adapter<SearchMedicineAd
                     if(data.getName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(data);
                     }
+                    if(data.getEngName().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(data);
+                    }
+                    if(data.getEnterprise().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(data);
+                    }
                 }
             }
 

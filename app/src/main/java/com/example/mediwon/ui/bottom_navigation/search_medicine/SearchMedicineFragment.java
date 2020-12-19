@@ -80,7 +80,7 @@ public class SearchMedicineFragment extends Fragment {
         MenuItem menuItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setMaxWidth(Integer.MAX_VALUE);
-        searchView.setQueryHint("제품명을 입력하세요");
+        searchView.setQueryHint("제품명/업체명을 입력하세요");
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
